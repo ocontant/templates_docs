@@ -1,0 +1,157 @@
+% Annual Report with Header Images - Dollarama
+% Demonstrates full-width header images like UTT-Books-44.pdf
+
+\documentclass{dollarama}
+\usepackage{dollarama-business}
+\usepackage{dollarama-layouts}
+\usepackage{dollarama-annual-report-layout}
+
+% Page setup for full-page title
+\geometry{
+    top=0cm,
+    bottom=0cm,
+    left=0cm,
+    right=0cm,
+    showframe=false
+}
+
+% Configuration des métadonnées
+\title{ANNUAL BUSINESS REVIEW}
+\subtitle{Performance \& Strategic Analysis}
+\author{Leadership Team}
+\department{Corporate Strategy}
+\status{Final}
+\version{1.0}
+\classification{Internal Use Only}
+
+% Set hero image for title page
+\setheroimage{images/dollarama_alt2.png}
+
+\begin{document}
+
+% Page de titre automatique
+\maketitle
+
+% Reset geometry for content pages
+\newgeometry{
+    top=5cm,  % Increased top margin for header images
+    bottom=2cm,
+    left=1.5cm,
+    right=2cm
+}
+
+% Table des matières
+\tableofcontents
+\clearpage
+
+% ===============================================
+% INTRODUCTION WITH HEADER IMAGE
+% ===============================================
+
+% Add full-width header image - Dollarama headquarters
+\addheaderimage{images/dollarama_hq_exterior.jpg}
+
+\section{Introduction}
+
+\subsection{Strategic Overview}
+
+Dollarama continues to strengthen its position as Canada's leading dollar store retailer. This annual review examines our performance across key strategic initiatives and outlines our roadmap for continued growth and market expansion.
+
+Our commitment to providing exceptional value to customers while maintaining operational excellence has driven consistent results throughout the fiscal year.
+
+\highlightbox{
+\textbf{Key Focus Areas:}
+\begin{itemize}
+\item Retail excellence and customer satisfaction
+\item Digital transformation initiatives
+\item Supply chain optimization
+\item Market expansion strategies
+\end{itemize}
+}
+
+\clearpage
+
+% ===============================================
+% FINANCIAL PERFORMANCE WITH HEADER IMAGE
+% ===============================================
+
+% Add header image for financial section - Office interior
+\addheaderimage{images/dollarama_hq_office.jpg}
+
+\section{Financial Performance}
+
+\subsection{Revenue Growth}
+
+Our financial performance this year demonstrates the strength of our business model and the effectiveness of our strategic initiatives. Revenue growth of 12.3\% reflects strong same-store sales performance and successful new store openings.
+
+\begin{dollaramafinancials}{
+    Strong financial performance across all key metrics demonstrates the resilience and growth potential of our business model.
+}
+    \keyfinancialmetrics{\$4.8B}{12.3\%}{15.2\%}{\$1.8B}
+\end{dollaramafinancials}
+
+\warningbox{
+\textbf{Market Leadership:} Our continued growth outpaces industry averages, reinforcing our market-leading position in the discount retail sector.
+}
+
+\clearpage
+
+% ===============================================
+% STRATEGIC INITIATIVES WITH HEADER IMAGE
+% ===============================================
+
+% Add header image for strategic section - Retail store aisle
+\addheaderimage{images/header_retail_aisle.jpg}
+
+\section{Strategic Initiatives}
+
+\subsection{Digital Transformation}
+
+Our digital transformation program has achieved significant milestones this year, enhancing both customer experience and operational efficiency across our retail network.
+
+\begin{dollaramacomparison}{Digital Platform Comparison}
+
+\textbf{Previous System}
+\begin{itemize}
+\item Legacy point-of-sale systems
+\item Limited inventory visibility
+\item Manual reporting processes
+\item Basic customer analytics
+\end{itemize}
+
+\vscompare
+
+\textbf{New Digital Platform}
+\begin{itemize}
+\item Integrated cloud-based systems
+\item Real-time inventory management
+\item Automated analytics and reporting
+\item Advanced customer insights
+\end{itemize}
+
+\end{dollaramacomparison}
+
+\clearpage
+
+% ===============================================
+% CONCLUSION WITH HEADER IMAGE
+% ===============================================
+
+% Add header image for conclusion - Corporate atrium
+\addheaderimage{images/dollarama_hq_atrium.jpg}
+
+\section{Conclusion}
+
+\subsection{Looking Forward}
+
+As we conclude this successful fiscal year, we remain focused on our long-term strategic objectives while maintaining the operational excellence that has made Dollarama a trusted retailer across Canada.
+
+Our strong financial performance, combined with successful strategic initiatives, positions us well for continued growth and market leadership in the years ahead.
+
+\begin{dollaramarecommendations}{
+    We recommend continued investment in digital transformation, strategic market expansion, and operational excellence to maintain our competitive advantage.
+}
+    \projectdashboard{18 months}{\$4.8B}{12 initiatives}{1,600+ stores}
+\end{dollaramarecommendations}
+
+\end{document}

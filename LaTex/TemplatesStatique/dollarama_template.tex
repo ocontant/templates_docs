@@ -1,0 +1,302 @@
+% Dollarama Corporate Document Template
+% Based on Dollarama's official branding guidelines
+
+\documentclass[letterpaper,11pt]{article}
+
+% Required packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in,top=1.25in,bottom=1.25in]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{graphicx}
+\usepackage{svg} % For SVG logo support
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{csquotes}
+\usepackage{needspace} % For preventing orphaned headings
+% \usepackage{fontspec} % For custom fonts (if using XeLaTeX/LuaLaTeX) - commented out for pdfLaTeX compatibility
+\usepackage[french]{babel} % For French support
+
+% Define Dollarama brand colors
+\definecolor{DollaramaGreen}{HTML}{008453}
+\definecolor{DollaramaYellow}{HTML}{FFE32D}
+\definecolor{DollaramaDarkGreen}{HTML}{006B44}
+\definecolor{DollaramaLightGreen}{HTML}{40A070}
+\definecolor{DollaramaBlack}{HTML}{000000}
+\definecolor{DollaramaGray}{HTML}{666666}
+\definecolor{DollaramaLightGray}{HTML}{F5F5F5}
+
+% Font settings (use system fonts with fontspec if available)
+\ifx\XeTeXversion\undefined
+  \ifx\LuaTeXversion\undefined
+    % pdfLaTeX
+    \usepackage[scaled=0.9]{helvet}
+    \renewcommand{\familydefault}{\sfdefault}
+  \else
+    % LuaLaTeX
+    \setmainfont{Helvetica Neue}[
+      Scale=0.9,
+      BoldFont={Helvetica Neue Bold},
+      ItalicFont={Helvetica Neue Italic}
+    ]
+  \fi
+\else
+  % XeLaTeX
+  \setmainfont{Helvetica Neue}[
+    Scale=0.9,
+    BoldFont={Helvetica Neue Bold},
+    ItalicFont={Helvetica Neue Italic}
+  ]
+\fi
+
+% Page setup
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[R]{\textcolor{DollaramaGray}{\thepage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Title formatting with automatic page breaks
+\titleformat{\section}
+  {\Large\bfseries\color{DollaramaGreen}}
+  {\thesection}{1em}{}
+  [\textcolor{DollaramaGreen}{\titlerule[0.8pt]}]
+
+\titleformat{\subsection}
+  {\large\bfseries\color{DollaramaDarkGreen}}
+  {\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+  {\normalsize\bfseries\color{DollaramaGreen}}
+  {\thesubsubsection}{1em}{}
+
+% Automatic page breaks for sections (level 1 titles)
+% Custom section commands that ensure proper page breaks
+\let\oldsection\section
+\renewcommand{\section}[1]{%
+  \clearpage% Always start sections on a new page
+  \oldsection{#1}%
+}
+
+\let\oldsubsection\subsection
+\renewcommand{\subsection}[1]{%
+  \needspace{4\baselineskip}% Ensure at least 4 lines available for subsections
+  \oldsubsection{#1}%
+}
+
+\let\oldsubsubsection\subsubsection
+\renewcommand{\subsubsection}[1]{%
+  \needspace{3\baselineskip}% Ensure at least 3 lines available for subsubsections
+  \oldsubsubsection{#1}%
+}
+
+% Prevent widows and orphans
+\widowpenalty=10000
+\clubpenalty=10000
+
+% Better page break control
+\raggedbottom
+
+% Improved spacing for titles
+\titlespacing*{\section}{0pt}{0pt}{20pt plus 4pt minus 2pt}
+\titlespacing*{\subsection}{0pt}{16pt plus 4pt minus 2pt}{8pt plus 2pt minus 2pt}
+\titlespacing*{\subsubsection}{0pt}{12pt plus 4pt minus 2pt}{6pt plus 2pt minus 2pt}
+
+% Customize list formatting
+\setlist[enumerate]{
+  leftmargin=1.5em,
+  topsep=0.5em,
+  itemsep=0.3em,
+  label=\textcolor{DollaramaGreen}{\arabic*.}
+}
+
+\setlist[itemize]{
+  leftmargin=1.5em,
+  topsep=0.5em,
+  itemsep=0.3em,
+  label=\textcolor{DollaramaGreen}{\textbullet}
+}
+
+% Custom commands for branding elements
+% Logo command - supports both SVG and fallback text
+\newcommand{\dollaramalogo}[1][0.8]{
+  \IfFileExists{dollarama-official-logo.svg}{
+    % Use SVG logo if available
+    \begin{center}
+      \includesvg[width=#1\textwidth]{dollarama-official-logo.svg}
+    \end{center}
+  }{
+    % Fallback to text-based logo
+    \begin{center}
+      \scalebox{#1}{
+        \begin{tabular}{c}
+          \textcolor{DollaramaGreen}{\fontsize{36}{40}\selectfont\bfseries DOLLARAMA} \\[0.3em]
+          \textcolor{DollaramaYellow}{\rule{8cm}{4pt}} \\[0.2em]
+          \textcolor{DollaramaGray}{\large Proudly Canadian}
+        \end{tabular}
+      }
+    \end{center}
+  }
+}
+
+\newcommand{\dollararheader}[2]{
+  \begin{center}
+    \textcolor{DollaramaGreen}{\LARGE\bfseries #1}\\[0.3em]
+    \textcolor{DollaramaGray}{\large #2}\\[0.5em]
+    \textcolor{DollaramaYellow}{\rule{6cm}{1pt}}
+  \end{center}
+  \vspace{1em}
+}
+
+\newcommand{\dollaramaquote}[1]{
+  \begin{center}
+    \colorbox{DollaramaLightGray}{
+      \parbox{0.8\textwidth}{
+        \centering
+        \textcolor{DollaramaGreen}{\large\itshape ``#1''}
+      }
+    }
+  \end{center}
+  \vspace{0.5em}
+}
+
+\newcommand{\dollaramaemphasis}[1]{
+  \textcolor{DollaramaGreen}{\textbf{#1}}
+}
+
+\newcommand{\dollaramahighlight}[1]{
+  \colorbox{DollaramaYellow}{\textcolor{DollaramaBlack}{\textbf{#1}}}
+}
+
+\newcommand{\dollaramalink}[2]{
+  \textcolor{DollaramaGreen}{\href{#1}{#2}}
+}
+
+% Custom table style
+\newcommand{\dollaramatable}[1]{
+  \begin{center}
+    \rowcolors{2}{DollaramaLightGray}{white}
+    \begin{tabular}{#1}
+      \toprule
+}
+
+\newcommand{\closeDollaramatable}{
+      \bottomrule
+    \end{tabular}
+  \end{center}
+}
+
+% Header row for tables
+\newcommand{\dollaramatableheader}[1]{
+  \rowcolor{DollaramaGreen}
+  \textcolor{white}{\textbf{#1}}
+}
+
+% Configure hyperlinks
+\hypersetup{
+  colorlinks=true,
+  linkcolor=DollaramaGreen,
+  urlcolor=DollaramaGreen,
+  citecolor=DollaramaGreen,
+  filecolor=DollaramaGreen,
+  menucolor=DollaramaGreen,
+  runcolor=DollaramaGreen,
+  pdfborder={0 0 0}
+}
+
+% Line spacing
+\setstretch{1.15}
+
+% Caption styling
+\captionsetup{
+  font={small,color=DollaramaGray},
+  labelfont={bf,color=DollaramaGreen},
+  skip=10pt
+}
+
+% Custom section for executive summary
+\newcommand{\executivesummary}[1]{
+  \begin{center}
+    \colorbox{DollaramaLightGray}{
+      \begin{minipage}{0.95\textwidth}
+        \vspace{0.5em}
+        \section*{\textcolor{DollaramaGreen}{Résumé Exécutif}}
+        #1
+        \vspace{0.5em}
+      \end{minipage}
+    }
+  \end{center}
+}
+
+% Document metadata
+\newcommand{\dollaramadocument}[4]{
+  \title{\textcolor{DollaramaGreen}{\textbf{#1}}}
+  \author{\textcolor{DollaramaGray}{#2}}
+  \date{\textcolor{DollaramaGray}{#3}}
+  
+  \begin{titlepage}
+    \centering
+    \vspace*{1.5cm}
+    
+    % Logo - prominently displayed
+    \dollaramalogo[0.8]
+    
+    \vspace{3cm}
+    
+    % Title
+    \textcolor{DollaramaGreen}{\Huge\bfseries #1}
+    
+    \vspace{1.5cm}
+    
+    % Subtitle
+    \textcolor{DollaramaGray}{\Large #4}
+    
+    \vspace{2cm}
+    
+    % Decorative line
+    \textcolor{DollaramaYellow}{\rule{10cm}{3pt}}
+    
+    \vfill
+    
+    % Author and date
+    \textcolor{DollaramaGray}{\large
+      Préparé par: #2\\[0.5em]
+      Date: #3
+    }
+    
+    \vspace{1.5cm}
+    
+    % Footer
+    \textcolor{DollaramaGray}{\small
+      Dollarama Inc.\\
+      Document Confidentiel
+    }
+  \end{titlepage}
+  
+  % Fix page numbering
+  \pagenumbering{roman}
+  \setcounter{page}{1}
+}
+
+% Custom TOC styling
+\renewcommand{\contentsname}{\textcolor{DollaramaGreen}{Table des Matières}}
+
+% Command to start main content with proper numbering
+\newcommand{\startmaincontent}{
+  \newpage
+  \pagenumbering{arabic}
+  \setcounter{page}{1}
+}
+
+% Begin document template

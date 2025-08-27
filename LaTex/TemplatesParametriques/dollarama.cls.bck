@@ -1,0 +1,188 @@
+% Dollarama Document Class
+% Une classe LaTeX professionnelle pour les documents d'affaires Dollarama
+% Auteur: Architecture Team Dollarama
+% Version: 1.0
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{dollarama}[2025/01/09 v1.0 Dollarama Business Document Class]
+
+% Options de classe
+\DeclareOption{draft}{\PassOptionsToClass{\CurrentOption}{article}}
+\DeclareOption{final}{\PassOptionsToClass{\CurrentOption}{article}}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+\ProcessOptions\relax
+
+% Classe de base
+\LoadClass[11pt,a4paper]{article}
+
+% Packages requis
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[french]{babel}
+\RequirePackage{geometry}
+\RequirePackage[table,xcdraw]{xcolor}
+\RequirePackage{graphicx}
+\RequirePackage{svg}
+\RequirePackage{fancyhdr}
+\RequirePackage{titlesec}
+\RequirePackage{enumitem}
+\RequirePackage{array}
+\RequirePackage{longtable}
+\RequirePackage{colortbl}
+\RequirePackage{float}
+\RequirePackage{tikz}
+\RequirePackage{hyperref}
+\RequirePackage{tocloft}
+
+% Configuration de la page
+\geometry{
+    top=2.5cm,
+    bottom=2.5cm,
+    left=2.5cm,
+    right=2.5cm,
+    headheight=1.5cm,
+    footskip=1cm
+}
+
+% Couleurs corporatives Dollarama
+\definecolor{DollaramaGreen}{RGB}{0,123,67}
+\definecolor{DollaramaYellow}{RGB}{255,198,0}
+\definecolor{DollaramaGray}{RGB}{88,89,91}
+\definecolor{DollaramaDarkGreen}{RGB}{0,100,50}
+
+% Configuration des hyperliens
+\hypersetup{
+    colorlinks=true,
+    linkcolor=DollaramaGreen,
+    urlcolor=DollaramaGreen,
+    citecolor=DollaramaGreen,
+    filecolor=DollaramaGreen,
+    pdftitle={Document Dollarama},
+    pdfauthor={Dollarama Inc.},
+    pdfsubject={Document d'affaires},
+    pdfkeywords={Dollarama, Business, Document}
+}
+
+% Styles des titres avec branding Dollarama
+\titleformat{\section}
+{\Large\bfseries\color{DollaramaGreen}}
+{\thesection}{1em}{}
+[\textcolor{DollaramaGreen}{\titlerule[1pt]}]
+
+\titleformat{\subsection}
+{\large\bfseries\color{DollaramaDarkGreen}}
+{\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+{\normalsize\bfseries\color{DollaramaGray}}
+{\thesubsubsection}{1em}{}
+
+% Configuration de l'en-tête et du pied de page
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\includesvg[height=0.8cm]{TemplatesParametriques/dollarama-official-logo}}
+\fancyhead[R]{\color{DollaramaGreen}\textbf{\@title}}
+\fancyfoot[C]{\color{DollaramaGray}\thepage}
+\fancyfoot[R]{\color{DollaramaGray}\small Confidentiel - Dollarama Inc.}
+
+% Suppression des lignes d'en-tête par défaut
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{DollaramaGreen}\leaders\hrule height \footrulewidth\hfill}}
+
+% Variables pour les métadonnées du document
+\newcommand{\@subtitle}{}
+\newcommand{\@subsubtitle}{}
+\newcommand{\@department}{}
+\newcommand{\@status}{}
+\newcommand{\@version}{}
+\newcommand{\@classification}{}
+
+% Commandes pour définir les métadonnées
+\newcommand{\subtitle}[1]{\renewcommand{\@subtitle}{#1}}
+\newcommand{\subsubtitle}[1]{\renewcommand{\@subsubtitle}{#1}}
+\newcommand{\department}[1]{\renewcommand{\@department}{#1}}
+\newcommand{\status}[1]{\renewcommand{\@status}{#1}}
+\newcommand{\version}[1]{\renewcommand{\@version}{#1}}
+\newcommand{\classification}[1]{\renewcommand{\@classification}{#1}}
+
+% Configuration de la table des matières
+\renewcommand{\cfttoctitlefont}{\Large\bfseries\color{DollaramaGreen}}
+\renewcommand{\cftlottitlefont}{\Large\bfseries\color{DollaramaGreen}}
+\renewcommand{\cftloftitlefont}{\Large\bfseries\color{DollaramaGreen}}
+
+% Espacement des listes
+\setlist[itemize]{leftmargin=1.5em, itemsep=0.2em}
+\setlist[enumerate]{leftmargin=1.5em, itemsep=0.2em}
+
+% Commande pour le logo Dollarama avec taille paramétrable
+\newcommand{\dollaramalogo}[1][0.8]{
+    \IfFileExists{TemplatesParametriques/dollarama-official-logo.svg}{
+        \begin{center}
+            \includesvg[width=#1\textwidth]{TemplatesParametriques/dollarama-official-logo.svg}
+        \end{center}
+    }{
+        \begin{center}
+            \scalebox{#1}{
+                \begin{tabular}{c}
+                    \textcolor{DollaramaGreen}{\fontsize{36}{40}\selectfont\bfseries DOLLARAMA} \\[0.3em]
+                    \textcolor{DollaramaYellow}{\rule{8cm}{4pt}} \\[0.2em]
+                    \textcolor{DollaramaGray}{\large Proudly Canadian}
+                \end{tabular}
+            }
+        \end{center}
+    }
+}
+
+% Page de titre personnalisée Dollarama
+\renewcommand{\maketitle}{
+    \begin{titlepage}
+        \dollaramalogo[0.6]
+        
+        \vspace{1.5cm}
+        
+        \begin{center}
+            % Title with proper spacing for multi-line titles
+            \parbox{0.9\textwidth}{
+                \centering
+                {\Huge\bfseries\color{DollaramaGreen} \@title}
+            }
+            
+            \ifx\@subtitle\empty
+                \vspace{2cm}
+            \else
+                \vspace{0.8cm}
+                \parbox{0.9\textwidth}{
+                    \centering
+                    {\LARGE\color{DollaramaDarkGreen} \@subtitle}
+                }
+                \vspace{1.5cm}
+            \fi
+            
+            \begin{tabular}{ll}
+                \ifx\@author\empty\else\textbf{Préparé par:} & \@author \\\fi
+                \ifx\@department\empty\else\textbf{Département:} & \@department \\\fi
+                \textbf{Date:} & \@date \\
+                \ifx\@status\empty\else\textbf{Statut:} & \@status \\\fi
+                \ifx\@version\empty\else\textbf{Version:} & \@version \\\fi
+                
+            \end{tabular}
+            
+            \vfill
+            
+            \ifx\@classification\empty\else
+                \textit{\@classification}
+            \fi
+            
+        \end{center}
+    \end{titlepage}
+    
+    % Configuration du style de page après la page de titre
+    \pagestyle{fancy}
+}
+
+% Style pour la première page des sections importantes
+\newcommand{\sectionbreak}{\clearpage}
+
+% Fin de la classe
+\endinput

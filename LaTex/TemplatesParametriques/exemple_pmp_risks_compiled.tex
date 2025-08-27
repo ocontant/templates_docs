@@ -1,0 +1,282 @@
+% EXEMPLE: Analyse de Risques PMP - Version Compilable
+% Démonstration du module de gestion des risques PMP
+
+\documentclass{article}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{tcolorbox}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{TemplatesParametriques/dollarama-business}
+\usepackage{TemplatesParametriques/dollarama-pmp-risks}
+
+% Couleurs Dollarama
+\definecolor{DollaramaGreen}{HTML}{00A651}
+\definecolor{DollaramaYellow}{HTML}{FFF200}
+\definecolor{DollaramaDarkGreen}{HTML}{008A42}
+
+% Configuration du document
+\geometry{
+    paper=letterpaper,
+    margin=2cm,
+    top=3cm,
+    bottom=3cm
+}
+
+\title{Analyse de Risques PMP}
+\author{Sophie Lavoie, PMP}
+\date{\today}
+
+\begin{document}
+
+% Page de titre simple
+\maketitle
+
+% Table des matières
+\tableofcontents
+\clearpage
+
+% ===============================================
+% INTRODUCTION
+% ===============================================
+
+\section{Introduction}
+
+Ce projet vise à migrer 85\% de notre infrastructure IT vers le cloud Azure sur 24 mois, avec un budget de 15.2M\$ et l'implication de 12 équipes techniques. Cette analyse suit les standards PMP du PMI.
+
+\highlightbox{
+    \textbf{Méthodologie PMP:} Cette analyse utilise les processus 11.1 à 11.7 du PMBOK Guide et respecte les standards ISO 31000 pour la gestion des risques.
+}
+
+% ===============================================
+% MATRICE DE RISQUE PMP
+% ===============================================
+
+\section{Matrice de Risque PMP}
+
+\pmpriskmatrix
+
+\infobox{
+    \textbf{Seuils de Tolérance Dollarama:}
+    \begin{itemize}
+        \item \textbf{Risques Critiques (>0.5):} Escalade immédiate au sponsor
+        \item \textbf{Risques Élevés (0.3-0.5):} Réunion hebdomadaire de mitigation
+        \item \textbf{Risques Moyens (0.1-0.3):} Surveillance bi-mensuelle
+        \item \textbf{Risques Faibles (<0.1):} Revue trimestrielle
+    \end{itemize}
+}
+
+% ===============================================
+% REGISTRE DES RISQUES
+% ===============================================
+
+\begin{pmpriskreregister}{
+    Projet de migration cloud critique pour la transformation digitale de Dollarama. Budget: 15.2M\$, durée: 24 mois, 12 équipes impliquées, 1,600 points de vente affectés.
+}
+
+\riskentry{R001}{Indisponibilité prolongée pendant migration}{\probmedium}{\impactveryhigh}{\pmpriskhigh{0.24}}{\mitigate{Migration par lots avec rollback automatique}}
+\rowcolor{gray!10}
+\riskentry{R002}{Dépassement budgétaire complexité sous-estimée}{\probhigh}{\impacthigh}{\pmpriskmedium{0.20}}{\mitigate{Réserve 15\% + suivi hebdomadaire}}
+\riskentry{R003}{Résistance changement équipes techniques}{\probveryhigh}{\impactmedium}{\pmpriskmedium{0.14}}{\mitigate{Formation intensive + champions}}
+\rowcolor{gray!10}
+\riskentry{R004}{Problèmes performance applications cloud}{\probhigh}{\impacthigh}{\pmpriskmedium{0.20}}{\mitigate{Tests charge + optimisation}}
+\riskentry{R005}{Faille sécurité migration données}{\probverylow}{\impactveryhigh}{\pmprisklow{0.08}}{\transfer{Assurance cyber + audit tiers}}
+\rowcolor{gray!10}
+\riskentry{R006}{Retard fournisseur cloud}{\probmedium}{\impacthigh}{\pmpriskmedium{0.12}}{\mitigate{Clauses pénalités + plan B}}
+\riskentry{R007}{Perte données critiques migration}{\probverylow}{\impactveryhigh}{\pmprisklow{0.08}}{\avoid{Triple backup + tests restauration}}
+\rowcolor{gray!10}
+\riskentry{R008}{Manque compétences cloud équipe IT}{\probveryhigh}{\impactmedium}{\pmpriskmedium{0.14}}{\mitigate{Certification Azure + consultants}}
+\riskentry{R009}{Opportunité économies optimisation}{\probhigh}{\impacthigh}{\pmpriskmedium{0.24}}{\exploit{Analyse proactive + renégociation}}
+\rowcolor{gray!10}
+\riskentry{R010}{Changement réglementaire stockage cloud}{\probmedium}{\impacthigh}{\pmprisklow{0.08}}{\accept{Surveillance légale + conformité}}
+
+\end{pmpriskreregister}
+
+% ===============================================
+% TABLEAU DE BORD RISQUES
+% ===============================================
+
+\section{Tableau de Bord des Risques}
+
+\riskdashboardpmp{0}{4}{4}{2}{1}
+
+\warningbox{
+    \textbf{ALERTES ACTUELLES:}
+    \begin{itemize}
+        \item 4 risques élevés nécessitent une attention soutenue
+        \item Budget de contingence à 85\% d'utilisation
+        \item 3 plans de mitigation en retard sur l'échéancier
+        \item 1 opportunité non exploitée identifiée
+    \end{itemize}
+}
+
+% ===============================================
+% ANALYSE QUANTITATIVE
+% ===============================================
+
+\section{Analyse Quantitative}
+
+\quantitativeriskanalysis{3,200,000}{2,500,000}{DÉPASSÉ}{3,800,000}
+
+\begin{dollaramacashflowtable}{Impact Financier des Risques Principaux}{tab:risk-impact}
+\textbf{Scénario de Base} & \$0 & \$15,200,000 & \$0 & \$0 & \$0 & \$0 \\
+\hline
+\rowcolor{gray!10}
+R001 - Indisponibilité (24\%) & \$0 & \$0 & \$1,200,000 & \$0 & \$0 & \$0 \\
+\hline
+R002 - Dépassement budget (20\%) & \$0 & \$2,800,000 & \$0 & \$0 & \$0 & \$0 \\
+\hline
+\rowcolor{gray!10}
+R004 - Performance (20\%) & \$0 & \$0 & \$800,000 & \$400,000 & \$0 & \$0 \\
+\hline
+R009 - Opportunité (24\%) & \$0 & -\$600,000 & -\$800,000 & -\$800,000 & -\$800,000 & -\$800,000 \\
+\hline
+\rowcolor{DollaramaGreen!20}
+\textbf{Exposition Totale} & \$0 & \$17,400,000 & \$1,200,000 & -\$400,000 & -\$800,000 & -\$800,000 \\
+\hline
+\end{dollaramacashflowtable}
+
+% ===============================================
+% ANALYSE SWOT
+% ===============================================
+
+\section{Analyse SWOT}
+
+\swotanalysis{
+    \textbf{Forces Internes:}
+    \begin{itemize}
+        \item Équipe IT expérimentée (15 ans moyenne)
+        \item Infrastructure réseau robuste
+        \item Support exécutif fort et engagé
+        \item Budget approuvé et disponible
+    \end{itemize}
+}{
+    \textbf{Faiblesses Internes:}
+    \begin{itemize}
+        \item Manque d'expertise cloud native
+        \item Systèmes legacy complexes et interdépendants
+        \item Résistance culturelle au changement
+        \item Documentation technique incomplète
+    \end{itemize}
+}{
+    \textbf{Opportunités Externes:}
+    \begin{itemize}
+        \item Économies d'échelle cloud significatives
+        \item Nouvelles fonctionnalités Azure disponibles
+        \item Amélioration drastique de la sécurité
+        \item Flexibilité et scalabilité illimitées
+    \end{itemize}
+}{
+    \textbf{Menaces Externes:}
+    \begin{itemize}
+        \item Changements réglementaires imprévisibles
+        \item Cyberattaques de plus en plus sophistiquées
+        \item Dépendance critique à un fournisseur unique
+        \item Volatilité et augmentation des prix cloud
+    \end{itemize}
+}
+
+% ===============================================
+% PLANS DE RÉPONSE
+% ===============================================
+
+\section{Plans de Réponse aux Risques}
+
+\riskresponseplan{R001 - Indisponibilité Services}{
+    \mitigate{Stratégie d'atténuation proactive avec rollback automatique}
+}{
+    \begin{itemize}
+        \item Migration par lots de 50 magasins maximum
+        \item Tests de basculement automatique avant chaque lot
+        \item Équipe de rollback disponible 24/7 pendant migrations
+        \item Monitoring en temps réel des performances critiques
+        \item Communication proactive avec tous les magasins
+    \end{itemize}
+}{
+    Marc Dubois, Architecte Cloud Senior
+}{
+    Plan actif jusqu'à completion migration (Décembre 2026)
+}
+
+\riskresponseplan{R002 - Dépassement Budgétaire}{
+    \mitigate{Contrôle strict des coûts avec contingence robuste}
+}{
+    \begin{itemize}
+        \item Réserve de contingence de 15\% (\$2.3M) préapprouvée
+        \item Suivi budgétaire hebdomadaire avec reporting exécutif
+        \item Approbation obligatoire pour tout dépassement >50K\$
+        \item Renégociation proactive des contrats si nécessaire
+        \item Priorisation dynamique des fonctionnalités critiques
+    \end{itemize}
+}{
+    Louise Martin, Contrôleur Financier
+}{
+    Surveillance continue pendant toute la durée du projet
+}
+
+\riskresponseplan{R009 - Opportunité d'Économies Supplémentaires}{
+    \exploit{Maximisation proactive des bénéfices inattendus}
+}{
+    \begin{itemize}
+        \item Analyse mensuelle détaillée des coûts cloud
+        \item Implémentation d'optimisation automatique des ressources
+        \item Renégociation trimestrielle des tarifs avec Microsoft
+        \item Déploiement stratégique de Reserved Instances
+        \item Partage des économies réalisées avec les départements
+    \end{itemize}
+}{
+    Sarah Thompson, Gestionnaire Cloud
+}{
+    Révision trimestrielle des opportunités avec comité directeur
+}
+
+% ===============================================
+% PROCESSUS DE SURVEILLANCE
+% ===============================================
+
+\section{Processus de Surveillance}
+
+\textbf{Fréquence de Surveillance:}
+\begin{itemize}
+    \item \textbf{Risques Critiques:} Surveillance quotidienne avec rapport
+    \item \textbf{Risques Élevés:} Revue hebdomadaire avec actions
+    \item \textbf{Risques Moyens:} Revue bi-mensuelle avec tendances
+    \item \textbf{Risques Faibles:} Revue mensuelle avec statut global
+\end{itemize}
+
+\textbf{Mécanismes d'Escalade:}
+\begin{enumerate}
+    \item \textbf{Niveau 1:} Chef de projet (résolution < 24h)
+    \item \textbf{Niveau 2:} Sponsor projet (résolution < 72h)
+    \item \textbf{Niveau 3:} Comité directeur (résolution < 1 semaine)
+    \item \textbf{Niveau 4:} Comité exécutif (décision stratégique)
+\end{enumerate}
+
+% ===============================================
+% RECOMMANDATIONS
+% ===============================================
+
+\section{Recommandations}
+
+Basé sur cette analyse PMP complète, le projet présente un profil de risque \textbf{MOYEN} avec des opportunités substantielles. Les 4 risques élevés identifiés ont des plans de mitigation solides et un financement de contingence approprié.
+
+\textbf{Actions Prioritaires:}
+\begin{enumerate}
+    \item Activation immédiate des plans de mitigation pour R001, R002, R003 et R004
+    \item Augmentation de la réserve de contingence à 18\% (\$2.7M)
+    \item Mise en place d'un centre de commande 24/7 pendant la migration
+    \item Formation accélérée des équipes sur Azure (certification obligatoire)
+    \item Signature d'un contrat d'assurance cyber-risques spécialisé
+\end{enumerate}
+
+\warningbox{
+    \textbf{DÉCISION REQUISE:} Approbation du budget de contingence supplémentaire (\$400K) avant le démarrage de la phase de migration critique en Mars 2025.
+}
+
+\textbf{Probabilité de Succès du Projet:} 87\% (dans les paramètres de coût et délai approuvés)
+
+\end{document}

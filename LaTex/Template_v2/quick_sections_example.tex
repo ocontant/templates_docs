@@ -1,0 +1,139 @@
+% Quick Parametric Section Templates Example
+% Demonstrates simplified usage with predefined templates
+% Perfect for rapid document creation
+
+\documentclass{dollarama}
+\usepackage{dollarama-business}
+\usepackage{dollarama-layouts}
+\usepackage{dollarama-annual-report-layout}
+
+% Import simplified section templates
+\usepackage{dollarama-sections-all}
+
+% Page setup
+\geometry{
+    top=0cm,
+    bottom=0cm,
+    left=0cm,
+    right=0cm,
+    showframe=false
+}
+
+% Configuration des métadonnées
+\title{QUARTERLY BUSINESS REVIEW}
+\subtitle{Q3 Performance Analysis}
+\author{Business Analytics Team}
+\department{Strategic Planning}
+\status{Final Report}
+\version{1.0}
+\classification{Confidential}
+
+% Set hero image for title page
+\setheroimage{images/dollarama_alt2.png}
+
+\begin{document}
+
+% Page de titre automatique
+\maketitle
+
+% Reset geometry for content pages
+\newgeometry{
+    top=5cm,
+    bottom=2cm,
+    left=1.5cm,
+    right=2cm
+}
+
+% ===============================================
+% QUICK INTRODUCTION SECTION
+% ===============================================
+
+\dollaramaquickintro{
+    Dollarama delivered strong Q3 results, demonstrating resilience and continued growth despite challenging market conditions. Our strategic focus on operational excellence and customer value proposition continues to drive positive outcomes.
+}{
+    Key strategic priorities for Q3 included:
+    \begin{itemize}
+        \item Enhancing customer experience across all touchpoints
+        \item Optimizing supply chain efficiency
+        \item Expanding digital capabilities
+        \item Strengthening market position
+    \end{itemize}
+}
+
+% ===============================================
+% QUICK FINANCIAL SECTION
+% ===============================================
+
+\dollaramaquickfinancial{
+    Q3 financial performance exceeded expectations with strong revenue growth and improved operational metrics. Our disciplined approach to cost management and strategic investments continues to yield positive results.
+}{
+    Revenue increased by 14.2\% compared to Q3 last year, driven by:
+    \begin{itemize}
+        \item Same-store sales growth of 8.1\%
+        \item Successful new store openings (22 locations)
+        \item Enhanced product mix optimization
+        \item Improved inventory turnover rates
+    \end{itemize}
+}
+
+\keyfinancialmetrics{\$1.3B}{14.2\%}{16.7\%}{1,638}
+
+\dollaramamarketleadership{
+    Dollarama maintains its leadership position in the Canadian discount retail market, with continued market share growth and strong customer loyalty metrics.
+}
+
+% ===============================================
+% QUICK STRATEGIC SECTION
+% ===============================================
+
+\dollaramaquickstrategic{
+    Our strategic initiatives in Q3 focused on digital transformation, operational excellence, and market expansion. These efforts have strengthened our competitive position and enhanced customer satisfaction.
+}{
+    Digital transformation achievements include:
+    \begin{itemize}
+        \item Implementation of advanced POS systems in 95\% of stores
+        \item Launch of enhanced inventory management platform
+        \item Rollout of customer analytics dashboard
+        \item Integration of omnichannel capabilities
+    \end{itemize}
+}
+
+\dollaramabeforeafter{Digital Platform Evolution}{
+    \begin{itemize}
+        \item Legacy point-of-sale systems
+        \item Manual inventory tracking
+        \item Limited customer insights
+        \item Disconnected operations
+    \end{itemize}
+}{
+    \begin{itemize}
+        \item Cloud-based integrated platform
+        \item Real-time inventory management
+        \item Advanced customer analytics
+        \item Unified operational dashboard
+    \end{itemize}
+}
+
+% ===============================================
+% QUICK CONCLUSION SECTION
+% ===============================================
+
+\dollaramaquickconclusion{
+    Q3 results demonstrate the strength of our business model and the effectiveness of our strategic execution. We are well-positioned for continued growth and market leadership as we enter Q4.
+}{
+    Looking ahead to Q4 and beyond, our priorities include:
+    \begin{itemize}
+        \item Continued store network expansion
+        \item Further digital capability enhancement
+        \item Supply chain optimization initiatives
+        \item Customer experience improvements
+    \end{itemize}
+}
+
+\dollaramaexecutivedashboard{Q4 2025}{+12\% growth}{8 initiatives}{1,660 stores}
+
+\dollaramastrategicrecommendations{
+    We recommend maintaining our current strategic trajectory while accelerating digital transformation initiatives and exploring new market opportunities. The foundation for sustained growth is firmly in place.
+}
+
+\end{document}

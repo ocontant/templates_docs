@@ -1,0 +1,335 @@
+% Package Dollarama Document Layouts
+% Environnements et layouts pré-définis pour documents Dollarama
+% Auteur: Architecture Team Dollarama
+% Version: 1.0
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{dollarama-layouts}[2025/01/09 v1.0 Dollarama Document Layouts]
+
+% Packages requis
+\RequirePackage{tcolorbox}
+\RequirePackage{environ}
+\RequirePackage{etoolbox}
+
+% ===============================================
+% ENVIRONNEMENTS DE SECTIONS BUSINESS
+% ===============================================
+
+% Environnement pour section d'introduction avec formatage
+% Usage: \begin{dollaramaintroduction}{contenu optionnel}
+\NewEnviron{dollaramaintroduction}[1]{
+    #1
+    
+    \BODY
+}
+
+% Environnement pour analyse de la situation avec formatage
+% Usage: \begin{dollaramasituation}{contenu optionnel}
+\NewEnviron{dollaramasituation}[1]{
+    #1
+    
+    \BODY
+}
+
+% Environnement pour section de solutions avec formatage
+% Usage: \begin{dollaramasolutions}{titre optionnel}
+\NewEnviron{dollaramasolutions}[1]{
+    \begin{tcolorbox}[
+        colback=DollaramaGreen!5,
+        colframe=DollaramaGreen,
+        boxrule=2pt,
+        arc=3pt,
+        title={\color{DollaramaGreen}\textbf{#1}},
+        fonttitle=\Large\bfseries
+    ]
+    \BODY
+    \end{tcolorbox}
+}
+
+% Environnement pour section de recommandations avec formatage
+% Usage: \begin{dollaramarecommendations}{titre optionnel}
+\NewEnviron{dollaramarecommendations}[1]{
+    \begin{tcolorbox}[
+        colback=DollaramaYellow!10,
+        colframe=DollaramaGreen,
+        boxrule=2pt,
+        arc=3pt,
+        title={\color{DollaramaGreen}\textbf{#1}},
+        fonttitle=\Large\bfseries
+    ]
+    \BODY
+    \end{tcolorbox}
+}
+
+% ===============================================
+% ENVIRONNEMENTS DE LAYOUTS SPÉCIALISÉS
+% ===============================================
+
+% Layout à deux colonnes avec branding
+\newenvironment{dollaramatwocolumn}[2]{
+    \begin{tcolorbox}[
+        colback=white,
+        colframe=DollaramaGreen,
+        boxrule=1pt,
+        arc=3pt,
+        title={\color{white}\textbf{#1}},
+        fonttitle=\large\bfseries
+    ]
+    \begin{minipage}[t]{0.48\textwidth}
+        \textbf{\color{DollaramaDarkGreen}#2}
+        \vspace{0.5em}
+}{
+    \end{minipage}
+    \end{tcolorbox}
+}
+
+\newcommand{\switchcolumn}{
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.48\textwidth}
+        \vspace{0.5em}
+}
+
+% Layout pour comparaison d'options (table-based)
+\newenvironment{dollaramacomparison}[1]{
+    \begin{tcolorbox}[
+        colback=DollaramaGreen!5,
+        colframe=DollaramaGreen,
+        boxrule=2pt,
+        arc=3pt,
+        title={\color{white}\textbf{#1}},
+        fonttitle=\Large\bfseries
+    ]
+    
+    \begin{tabular}{@{}p{0.48\textwidth}@{\hspace{0.04\textwidth}}p{0.48\textwidth}@{}}
+    \cellcolor{DollaramaYellow!20}
+}{
+    \end{tabular}
+    \end{tcolorbox}
+}
+
+\newcommand{\vscompare}{
+    &
+    \cellcolor{DollaramaGreen!20}
+}
+
+% ===============================================
+% LAYOUTS DE FLUX DE PROCESSUS
+% ===============================================
+
+% Environnement pour workflow/processus
+\newcounter{processStep}
+\newenvironment{dollaramaprocess}[1]{
+    \setcounter{processStep}{0}
+    \begin{tcolorbox}[
+        colback=white,
+        colframe=DollaramaGreen,
+        boxrule=2pt,
+        arc=5pt,
+        title={\color{DollaramaGreen}\textbf{#1}},
+        fonttitle=\Large\bfseries
+    ]
+}{
+    \end{tcolorbox}
+}
+
+% Étape de processus
+\newcommand{\processstep}[2]{
+    \stepcounter{processStep}
+    \vspace{0.5em}
+    \begin{tcolorbox}[
+        colback=DollaramaGreen!10,
+        colframe=DollaramaGreen,
+        boxrule=1pt,
+        arc=2pt,
+        left=5pt,
+        right=5pt,
+        top=5pt,
+        bottom=5pt
+    ]
+    \textbf{\color{DollaramaGreen}Étape \theprocessStep: #1}
+    \vspace{0.3em}
+    
+    #2
+    \end{tcolorbox}
+    
+    % Flèche vers l'étape suivante (sauf pour la dernière)
+    \ifnum\theprocessStep<10
+        \begin{center}
+        \textcolor{DollaramaGreen}{\Large $\downarrow$}
+        \end{center}
+    \fi
+}
+
+% ===============================================
+% LAYOUTS DE DONNÉES FINANCIÈRES
+% ===============================================
+
+% Environnement pour section financière avec formatage
+% Usage: \begin{dollaramafinancials}{titre optionnel}
+\NewEnviron{dollaramafinancials}[1]{
+    \begin{tcolorbox}[
+        colback=white,
+        colframe=DollaramaGreen,
+        boxrule=2pt,
+        arc=3pt,
+        title={\color{DollaramaGreen}\textbf{#1}},
+        fonttitle=\Large\bfseries
+    ]
+    \BODY
+    \end{tcolorbox}
+}
+
+% Layout pour métriques financières avec graphiques
+\newenvironment{dollaramametrics}[1]{
+    \begin{tcolorbox}[
+        colback=DollaramaGreen!5,
+        colframe=DollaramaGreen,
+        boxrule=2pt,
+        arc=5pt,
+        title={\color{DollaramaGreen}\textbf{#1}},
+        fonttitle=\Large\bfseries
+    ]
+}{
+    \end{tcolorbox}
+}
+
+% ===============================================
+% LAYOUTS DE TIMELINE ET JALONS
+% ===============================================
+
+% Environnement pour timeline de projet avec formatage
+% Usage: \begin{dollaramatimeline}{titre optionnel}
+\newcounter{milestone}
+\newenvironment{dollaramatimeline}[1]{
+    \setcounter{milestone}{0}
+    \begin{tcolorbox}[
+        colback=white,
+        colframe=DollaramaGreen,
+        boxrule=2pt,
+        arc=3pt,
+        title={\color{DollaramaGreen}\textbf{#1}},
+        fonttitle=\Large\bfseries
+    ]
+}{
+    \end{tcolorbox}
+}
+
+% Jalon de timeline
+\newcommand{\milestone}[3]{
+    \stepcounter{milestone}
+    \vspace{0.5em}
+    
+    \begin{tcolorbox}[
+        colback=DollaramaYellow!20,
+        colframe=DollaramaYellow,
+        boxrule=1pt,
+        arc=2pt,
+        left=8pt,
+        right=8pt,
+        top=5pt,
+        bottom=5pt
+    ]
+    \begin{tabular}{p{0.15\textwidth}p{0.25\textwidth}p{0.55\textwidth}}
+        \textbf{\color{DollaramaGreen}Jalon \themilestone} & 
+        \textbf{#1} & 
+        #2 \\
+        & & \textit{#3}
+    \end{tabular}
+    \end{tcolorbox}
+    
+    % Ligne de connexion vers le jalon suivant
+    \ifnum\themilestone<10
+        \begin{center}
+        \textcolor{DollaramaGreen}{\rule{2pt}{1em}}
+        \end{center}
+    \fi
+}
+
+% ===============================================
+% LAYOUTS DE GESTION DES RISQUES
+% ===============================================
+
+% Environnement pour analyse de risques avec formatage
+% Usage: \begin{dollaramarisks}{titre optionnel}
+\NewEnviron{dollaramarisks}[1]{
+    \begin{tcolorbox}[
+        colback=white,
+        colframe=DollaramaRed,
+        boxrule=2pt,
+        arc=3pt,
+        title={\color{DollaramaRed}\textbf{#1}},
+        fonttitle=\Large\bfseries
+    ]
+    \BODY
+    \end{tcolorbox}
+}
+
+% Layout pour catégories de risques
+\newenvironment{dollaramariskcategory}[2]{
+    \begin{tcolorbox}[
+        colback=#1!10,
+        colframe=#1,
+        boxrule=1pt,
+        arc=3pt
+    ]
+    \textbf{\color{#1}#2}
+    \vspace{0.5em}
+    
+}{
+    \end{tcolorbox}
+    \vspace{0.5em}
+}
+
+% ===============================================
+% LAYOUTS D'APPENDICES
+% ===============================================
+
+% Environnement pour section d'appendices avec formatage
+% Usage: \begin{dollaramaappendices}
+\NewEnviron{dollaramaappendices}{
+    \clearpage
+    \appendix
+    \pagenumbering{Roman}
+    \setcounter{page}{1}
+    
+    \BODY
+}
+
+% Environnement pour appendice individuel avec formatage
+% Usage: \begin{dollaramaappendix}[label optionnel]
+\newenvironment{dollaramaappendix}[1][]{
+    \ifx&#1&\else\label{#1}\fi
+}{
+    \clearpage
+}
+
+% ===============================================
+% COMMANDES UTILITAIRES POUR LAYOUTS
+% ===============================================
+
+% Séparateur de section avec style
+\newcommand{\sectionseparator}[1]{
+    \vspace{2em}
+    \begin{center}
+    \begin{tcolorbox}[
+        colback=DollaramaGreen,
+        colframe=DollaramaGreen,
+        boxrule=0pt,
+        arc=10pt,
+        width=0.6\textwidth,
+        left=0pt,
+        right=0pt,
+        top=8pt,
+        bottom=8pt
+    ]
+    \begin{center}
+    \textcolor{white}{\textbf{\large #1}}
+    \end{center}
+    \end{tcolorbox}
+    \end{center}
+    \vspace{1em}
+}
+
+% Fin du package
+\endinput

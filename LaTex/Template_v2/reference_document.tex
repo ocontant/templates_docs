@@ -1,0 +1,432 @@
+% Business Case - Modernisation de l'Infrastructure de Vidéosurveillance
+% Dollarama - Amérique du Nord
+% Utilisation des Templates Paramétriques Dollarama
+
+\documentclass{dollarama}
+\usepackage{dollarama-business}
+\usepackage{dollarama-layouts}
+\usepackage{dollarama-pmp-risks}
+
+% Reduce hyphenation
+\hyphenpenalty=8000
+\exhyphenpenalty=8000
+\tolerance=2000
+\emergencystretch=\maxdimen
+\hbadness=10000
+
+% Configuration des métadonnées
+\title{Business Case}
+\subtitle{Modernisation de l'Infrastructure de Vidéosurveillance}
+\author{Olivier Contant - Concepteur Infrastructure}
+\department{Projet Infrastructure}
+\status{Draft}
+\version{0.1}
+\classification{Confidentiel - Usage interne}
+
+\begin{document}
+
+% Page de titre automatique
+\maketitle
+
+% Table des matières
+\tableofcontents
+\clearpage
+
+% ===============================================
+% RÉSUMÉ EXÉCUTIF
+% ===============================================
+
+\begin{executivesummaryenv}
+\execsection{Problématique}
+\vspace{0.3em}
+La dépendance au contrôleur DVR comme unique point d'accès aux caméras crée des frictions opérationnelles majeures. ~30\% des magasins ont des problèmes de connectivité avec le DVR, bloquant la migration FortiRecorder et nécessitant un accès direct aux caméras pour la reconfiguration 3XLogic vers ONVIF.
+
+\vspace{1.2em}
+\execsection{Solution Proposée}
+\vspace{0.3em}
+Approche en deux temps : (1) Solution immédiate Jump Box (4,500\$) avec dispositifs portables pour contourner les limitations Monéris, et (2) Transformation architecturale intégrée au projet FortiRecorder pour moderniser l'architecture réseau lors du passage FortiRecorder.
+
+\vspace{1.2em}
+\execsection{Bénéfices Clés}
+\vspace{-1em}
+\begin{itemize}
+\item Accès garanti aux 12,000+ caméras indépendamment du DVR
+\item Support critique du projet FortiRecorder pour 1,570 magasins restants
+\item Élimination des accès non conformes TeamViewer
+\item Réduction de 90\% des incidents d'intervention
+\item Architecture prête pour l'IoT et innovations futures
+\end{itemize}
+
+\vspace{0.8em}
+\execsection{Impact Financier}
+\vspace{-1em}
+\begin{itemize}
+\item \textbf{Investissement :} 4,500\$ (Jump Box) + intégration au projet FortiRecorder existant
+\item \textbf{ROI :} ROI immédiat grâce au maintien des opérations et accélération FortiRecorder
+\item \textbf{Économies :} Réduction 90\% des interventions, optimisation des déplacements techniques
+\end{itemize}
+
+\vspace{0.8em}
+\execsection{Recommandation}
+Approbation immédiate des 4,500\$ pour Jump Box et approbation de principe pour la refonte architecturale intégrée au projet FortiRecorder. Chaque mois de retard correspond à 40-100 magasins migrés sans optimisation, ce qui représente des opportunités perdues.
+\end{executivesummaryenv}
+
+% ===============================================
+% CONTEXTE D'AFFAIRES
+% ===============================================
+
+\section{Introduction et Contexte}
+
+\subsection{Contexte Organisationnel}
+
+\textbf{Dollarama} est une chaîne de magasins de détail leader dans le secteur du commerce à prix réduit, opérant \textbf{1,600 magasins} à travers l'Amérique du Nord (Canada et États-Unis).
+
+\subsection{Infrastructure actuelle de sécurité}
+
+\highlightbox{
+\textbf{Équipement par magasin :}
+\begin{itemize}
+\item Moyenne de 8 caméras de surveillance par magasin
+\item Jusqu'à 40 caméras dans les magasins de grande surface
+\item Total estimé : ~12,000 caméras sur l'ensemble du réseau
+\item \textbf{Un contrôleur DVR par magasin} : Centralise la gestion des caméras au niveau magasin
+\end{itemize}
+}
+
+\subsection{Architecture technique :}
+\begin{itemize}
+\item DVR 3XLogic avec protocole propriétaire
+\item Caméras isolées sur VLAN 2 (réseau air-gap), les adresses IP du sous-réseau ne sont pas routables
+\item Configuration IP statique pour toutes les caméras
+\item DVR avec double connectivité : VLAN2 caméras, et VLAN34 Partner accessible du réseau corporatif
+\item \textbf{Gestion centralisée} : DVR accessible depuis le réseau corporatif pour configurer les caméras
+\end{itemize}
+
+\subsection{Projet de modernisation en cours}
+
+Migration planifiée de la solution 3XLogic vers \textbf{Fortinet FortiRecorder} :
+\begin{itemize}
+\item Passage du protocole propriétaire 3XLogic au standard ONVIF
+\item \textbf{État actuel} : 30 magasins convertis sur 1,600 (1,9\%)
+\item \textbf{Rythme de déploiement} : 4 magasins par jour
+\item \textbf{Déploiement actuel} : Sans modification de l'infrastructure réseau
+\item \textbf{Opportunité} : Reconfiguration des caméras déjà requise pour la migration
+\end{itemize}
+
+% ===============================================
+% DÉFINITION DU BESOIN
+% ===============================================
+
+\section{Définition du Besoin}
+
+\subsection{Accès Sécurisé aux Caméras}
+
+Les équipes techniques corporatives requièrent un \textbf{accès sécurisé et efficace} aux caméras de surveillance isolées sur le réseau air-gap des magasins pour pallier les défaillances du contrôleur DVR :
+
+\begin{enumerate}
+\item \textbf{Contournement des pannes DVR} : Accès direct aux caméras lorsque le contrôleur est défaillant
+\item \textbf{Migration système} : Reconfiguration des caméras 3XLogic vers ONVIF lorsque le DVR est inaccessible
+\item \textbf{Maintenance préventive} : Configuration et mise à jour des systèmes indépendamment du DVR
+\item \textbf{Support réactif} : Résolution rapide des incidents sans dépendre du contrôleur
+\item \textbf{Optimisation opérationnelle} : Réduction des déplacements physiques en magasin
+\end{enumerate}
+
+\vspace{1em}
+\noindent\textbf{Critères de succès :}
+\begin{itemize}
+\item Accès distant sécurisé au VLAN 2 directement depuis le réseau corporatif
+\item Solution évolutive pour 1,600 magasins avec contrôleur DVR par magasin
+\item Réduction de 80\% du temps d'intervention lors de pannes DVR
+\item Compatibilité avec la migration FortiRecorder
+\item Indépendance vis-à-vis de la fiabilité du contrôleur DVR
+\end{itemize}
+
+% ===============================================
+% EXPOSITION DU PROBLÈME
+% ===============================================
+
+\section{Exposition du Problème}
+
+
+\subsection{Problème principal} 
+Fiabilité insuffisante des contrôleurs DVR. Bien que chaque magasin dispose d'un DVR contrôleur connecté au réseau corporatif pour gérer les caméras isolées sur VLAN 2, ces contrôleurs ne sont pas suffisamment fiables pour garantir un accès constant aux caméras.
+
+
+\subsection{Cas d'usage critique : Migration FortiRecorder}
+
+Durant le projet de remplacement des DVR 3XLogic par FortiRecorder, les caméras doivent être reconfigurées du mode propriétaire 3XLogic vers le standard ONVIF. 
+
+\highlightbox{
+\textbf{Problème :} Plusieurs DVR des magasins sont inactifs ou n'ont pas de connectivité, obligeant un accès direct aux caméras pour les reconfigurer, nécessitant le dispatch d'un technicien sur site.
+}
+
+\subsection{Contrainte technique secondaire}
+
+Les politiques de sécurité informatique (GPO), du sous-contractant Monéris, empêchent les techniciens d'utiliser leurs ordinateurs portables corporatifs sur deux interfaces réseau simultanément, bloquant ainsi l'accès direct aux caméras isolées.
+
+\subsection{Solution temporaire actuelle (non satisfaisante)}
+
+\begin{dollaramariskcategory}{red}{}
+\textbf{Approche normale :} Utilisation du contrôleur DVR par magasin pour gérer les caméras depuis le réseau Partner accessible du réseau Corpo
+
+\textbf{Problème :} ~30\% des magasins ont des problèmes de connectivité ou des DVR inactifs durant le projet FortiRecorder
+
+\textbf{Contournement actuel :} Utilisation de TeamViewer via connexion Internet personnelle des techniciens Monéris
+\begin{itemize}
+\item \textbf{Performance inadéquate. L'initiative a échoué}
+\item Risques de sécurité élevés
+\item Non conforme aux politiques de sécurité
+\end{itemize}
+\end{dollaramariskcategory}
+
+% ===============================================
+% VISION STRATÉGIQUE ET SOLUTIONS
+% ===============================================
+
+\section{Approche en Deux Temps}
+
+\subsection{Solution 1 : Architecture modernisée avec accès sécurisé}
+
+Refonte de l'architecture réseau permettant un accès contrôlé et sécurisé directement au VLAN 2 depuis le réseau corporatif, indépendamment du contrôleur DVR, tout en maintenant les standards de sécurité.
+
+\textbf{Justification :} La dépendance au contrôleur DVR crée un point de défaillance unique. Avec ~30\% des magasins ayant des problèmes DVR durant la migration FortiRecorder, l'accès direct au VLAN 2 est essentiel pour maintenir les opérations.
+
+\infobox{
+\textbf{Caractéristiques techniques :}
+\begin{itemize}
+\item Implémentation de serveurs DHCP pour le VLAN2 des caméras
+\item Migration des caméras de IP statique vers DHCP
+\item Création d'une segmentation réseau sécurisée à partir des FortiGates
+\end{itemize}
+}
+
+\subsection{Solution 2 : Dispositif Jump Box temporaire}
+
+Solution palliative immédiate utilisant des dispositifs économiques portables (type Raspberry Pi) pour remplacer les laptops des techniciens Monéris durant la période de transition.
+
+\textbf{Mode opératoire :}
+\begin{enumerate}
+\item Le technicien déconnecte temporairement le DVR
+\item Connecte le Raspberry Pi en réutilisant la configuration IP du DVR préconfiguré
+\item Effectue les interventions nécessaires via accès distant
+\item Reconnecte le DVR et repart avec le dispositif
+\item Le même dispositif est réutilisé pour d'autres sites
+\end{enumerate}
+
+
+% ===============================================
+% ANALYSE COMPARATIVE
+% ===============================================
+
+\begin{dollaramacomparison}{Comparaison des Solutions}
+
+\textbf{Solution 1: Architecture}
+\textbf{Avantages :}
+\begin{itemize}
+\item Accès direct depuis le réseau corporatif
+\item Aucun équipement supplémentaire pour les techniciens
+\item Traçabilité complète des accès
+\item Ne nécessite pas la coordination de l'envoi de ressources sur site
+\end{itemize}
+
+\textbf{Coût :} Temps des ressources internes seulement (aucun CAPEX requis)
+
+\textbf{Complexité :} Reconfiguration manuelle des caméras 3XLogic, ~12,000+ caméras
+
+\vscompare
+
+\textbf{Solution 2: Jump Box}
+\textbf{Avantages :}
+\begin{itemize}
+\item Aucune modification de l'infrastructure existante
+\item Aucun équipement permanent laissé en magasin
+\item Solution plus sécurisée que l'approche actuelle (TeamViewer)
+\item Dispositifs réutilisables et portables
+\item ROI immédiat
+\end{itemize}
+
+\textbf{Coût :} 4,500\$ (30 dispositifs × 150\$)
+
+\textbf{Limitation :} Nécessite toujours le déploiement d'une ressource Monéris sur site
+
+\end{dollaramacomparison}
+
+% ===============================================
+% ANALYSE D'IMPACT
+% ===============================================
+
+\section{Analyse d'Impact}
+
+\begin{dollaramacomparison}{Impact Organisationnel}
+
+\textbf{Solution 1}
+\begin{itemize}
+\item \textbf{Impact Moyen} sur les équipes caméras et projet FortiRecorder
+\item \textbf{Équipe réseau :} 1-2 semaines temps ressources pour implémenter les changements réseaux
+\item \textbf{Équipe Caméras :} 1-2h par magasin configuration des caméras
+\item \textbf{Opérations magasins :} L'interruption de service s'inscrit dans le calendrier prévu du projet FortiRecorder
+\end{itemize}
+
+\vscompare
+
+\textbf{Solution 2}
+\begin{itemize}
+\item \textbf{Impact minimal} sur les équipes caméras et projet FortiRecorder
+\item \textbf{Équipe Caméras :} 3-6h + per diem par magasin
+\item \textbf{Équipe Monéris :} 1-2 heures de formation pour les techniciens
+\item \textbf{Aucune interruption :} Aucun impact opérationnel supplémentaire
+\end{itemize}
+
+\end{dollaramacomparison}
+
+% ===============================================
+% ANALYSE DES RISQUES
+% ===============================================
+
+\section{Matrice des Risques}
+
+\begin{dollaramarisktable}{Matrice des Risques (PMBoK)}{tab:risk-matrix}
+Perte de caméras durant reconfiguration & \riskmedium & \riskhigh & \scoremedium{0.35} & Configuration par phases \\
+\hline
+\rowcolor{gray!30} Incompatibilité avec caméras sans gateway & \riskmedium & \riskmedium & \scorelow{0.25} & Intervention physique \\
+\hline
+Retard projet FortiRecorder & \risklow & \riskmedium & \scorelow{0.15} & Solutions indépendantes \\
+\hline
+\rowcolor{gray!30} Vol/perte de Jump Box & \risklow & \risklow & \scorelow{0.09} & Chiffrement + inventaire \\
+\hline
+Non-adoption par techniciens & \risklow & \riskmedium & \scorelow{0.05} & Formation + support \\
+\hline
+\end{dollaramarisktable}
+
+\infobox{
+\textbf{Score de risque global (PMBoK) :}
+\begin{itemize}
+\item \textbf{Solution 1 :} 0.25 (Risque moyen) - Moyenne des 3 premiers risques
+\item \textbf{Solution 2 :} 0.10 (Risque faible) - Moyenne des 3 derniers risques
+\end{itemize}
+}
+
+
+% ===============================================
+% ESTIMATION DES COÛTS ET BÉNÉFICES
+% ===============================================
+
+\section{Estimation des Coûts}
+
+\begin{dollaramacomparison}{Comparaison des coûts}
+
+\textbf{Solution 1}
+\begin{itemize}
+\item \textbf{Équipe réseau :} 1-2 semaines de temps ressources
+\item \textbf{Équipe caméras :} 1-2h par magasin de configuration
+\item \textbf{Formation :} Formation interne minimale
+\end{itemize}
+
+\vscompare
+
+\textbf{Solution 2}
+\begin{itemize}
+\item \textbf{Équipements \footnotesize{(30×150\$)}:} \currency{4,500}
+\item \textbf{Déploiement :} Temps Ressource Monéris
+\item \textbf{Formation :} Temps ressources internes
+\end{itemize}
+
+\end{dollaramacomparison}
+
+
+% ===============================================
+% RECOMMANDATION
+% ===============================================
+
+\section{Approche Stratégique Recommandée}
+
+\textbf{Approuver la refonte de l'architecture réseau} en synergie avec le projet FortiRecorder, avec déploiement immédiat de la solution Jump Box comme mesure transitoire.
+
+\subsection{Justification de la refonte architecturale}
+
+\begin{enumerate}
+\item \textbf{Fenêtre d'opportunité unique :} 98,1\% des magasins doivent encore migrer vers FortiRecorder
+\item \textbf{Économies de synergie :} Optimisation en combinant les deux projets vs approches séparées
+\item \textbf{Élimination des contraintes :} Accès direct permanent au VLAN 2
+\item \textbf{Positionnement stratégique :} Architecture prête pour l'IoT et innovations futures
+\item \textbf{Résilience opérationnelle :} Indépendance vis-à-vis du contrôleur DVR
+\end{enumerate}
+
+\warningbox{
+\textbf{Urgence d'action :} Chaque mois de retard correspond à 40-100 magasins migrés sans optimisation, ce qui représente des opportunités perdues. Le moment est \textbf{critique} car seulement 30 magasins sur 1,600 ont été convertis (1,9\%).
+}
+
+\subsection{Décisions requises}
+
+\begin{enumerate}
+\item \textbf{Approbation immédiate :} Budget de \currency{4,500} pour la solution Jump Box
+\item \textbf{Approbation de principe :} Refonte architecturale intégrée au projet FortiRecorder
+\item \textbf{Mandat :} Équipe projet pour définir l'architecture cible détaillée
+\end{enumerate}
+
+
+% ===============================================
+% PLAN DE MISE EN ŒUVRE
+% ===============================================
+
+\section{Plan de Mise en Œuvre Intégré}
+
+\milestone{Semaine 1-2}{Conception architecture cible}{Analyse détaillée et design de l'architecture modernisée. Validation avec équipes sécurité et réseau avec plan d'intégration avec projet FortiRecorder.}
+
+\milestone{Semaine 1}{Acquisition Jump Box pilote}{Acquisition et test de 5 dispositifs pilotes (750\$). Évaluation de stratégies d'automation de reconfiguration des caméras.}
+
+\milestone{Semaine 4}{Déploiement Jump Box prioritaires}{Déploiement de 15 unités prioritaires (2,250\$). Configuration des caméras mise à jour.}
+
+\milestone{Semaine 8}{Déploiement Jump Box complet}{Déploiement complet 10 unités restantes (1,500\$). Révision mi-parcours et ajustements.}
+
+\milestone{Semaine 12}{Migration complète}{Configuration des caméras mise à jour. Support immédiat du projet FortiRecorder et reconfiguration des caméras.}
+
+
+% ===============================================
+% APPENDICES
+% ===============================================
+
+\section{Appendices}
+
+\begin{dollaramaappendix}[app:tech-details]
+\section{Détails Techniques de l'Architecture}
+\textbf{Configuration actuelle :}
+\begin{itemize}
+\item DVR 3XLogic avec protocole propriétaire
+\item Caméras isolées sur VLAN 2 (réseau air-gap)
+\item Configuration IP statique pour toutes les caméras
+\item DVR avec double connectivité : VLAN2 caméras et VLAN34 Partner
+\end{itemize}
+
+\textbf{Architecture cible :}
+\begin{itemize}
+\item Serveurs DHCP pour le VLAN2 des caméras
+\item Migration des caméras de IP statique vers DHCP
+\item Segmentation réseau sécurisée via FortiGates
+\item Accès direct depuis le réseau corporatif
+\end{itemize}
+\end{dollaramaappendix}
+
+\begin{dollaramaappendix}[app:jumpbox-specs]
+\section{Spécifications Jump Box}
+\textbf{Caractéristiques techniques :}
+\begin{itemize}
+\item Configuration Plug \& Play réutilisant l'IP du DVR
+\item Double interface réseau : VLAN 2 + VLAN 34
+\item Accès sécurisé via infrastructure existante
+\item Coût unitaire : ~150\$ CAD
+\item Flotte estimée : 20-30 unités pour couvrir ~600 magasins
+\end{itemize}
+
+\textbf{Mode opératoire détaillé :}
+\begin{enumerate}
+\item Déconnexion temporaire du DVR
+\item Connexion du Raspberry Pi avec configuration IP préconfigurée
+\item Intervention via accès distant
+\item Reconnexion du DVR
+\item Récupération du dispositif pour réutilisation
+\end{enumerate}
+\end{dollaramaappendix}
+
+
+\end{document}

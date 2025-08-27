@@ -1,0 +1,58 @@
+% Dollarama Complete Section Templates Package
+% Master package that imports all parametric section templates
+% Usage: \usepackage{dollarama-sections-all}
+
+\ProvidesPackage{dollarama-sections-all}
+
+% Required packages for string comparison
+\RequirePackage{etoolbox}
+
+% Import all section template packages
+\RequirePackage{dollarama-section-introduction}
+\RequirePackage{dollarama-section-financial}
+\RequirePackage{dollarama-section-strategic}
+\RequirePackage{dollarama-section-conclusion}
+
+% Master section template selector
+% Usage: \dollaramasection{type}{title}{subtitle}{content}{headerimage}
+% Types: introduction, financial, strategic, conclusion
+\newcommand{\dollaramasection}[5]{
+    \ifstrequal{#1}{introduction}{
+        \dollaramasectionintroduction{#2}{#3}{#4}{#5}
+    }{
+        \ifstrequal{#1}{financial}{
+            \dollaramasectionfinancial{#2}{#3}{#4}{#5}
+        }{
+            \ifstrequal{#1}{strategic}{
+                \dollaramasectionstrategic{#2}{#3}{#4}{#5}
+            }{
+                \ifstrequal{#1}{conclusion}{
+                    \dollaramasectionconclusion{#2}{#3}{#4}{#5}
+                }{
+                    \PackageError{dollarama-sections-all}{Unknown section type: #1}{Valid types are: introduction, financial, strategic, conclusion}
+                }
+            }
+        }
+    }
+}
+
+% Predefined section templates with default images
+\newcommand{\dollaramaquickintro}[2]{
+    \dollaramasectionintroduction{Introduction}{Strategic Overview}{#1}{images/dollarama_hq_exterior.jpg}
+    \dollaramastrategicoverview{Strategic Overview}{#2}
+}
+
+\newcommand{\dollaramaquickfinancial}[2]{
+    \dollaramasectionfinancial{Financial Performance}{Revenue Growth}{#1}{images/dollarama_hq_office.jpg}
+    \dollaramarevenueanalysis{Revenue Growth}{#2}
+}
+
+\newcommand{\dollaramaquickstrategic}[2]{
+    \dollaramasectionstrategic{Strategic Initiatives}{Digital Transformation}{#1}{images/header_retail_aisle.jpg}
+    \dollaramadigitaltransformation{Digital Transformation}{#2}
+}
+
+\newcommand{\dollaramaquickconclusion}[2]{
+    \dollaramasectionconclusion{Conclusion}{Looking Forward}{#1}{images/dollarama_hq_atrium.jpg}
+    \dollaramamlookingforward{Looking Forward}{#2}
+}

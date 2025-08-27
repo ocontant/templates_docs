@@ -1,0 +1,47 @@
+\documentclass{dollarama}
+
+% Définition des termes techniques
+\defterm{NVR}{Network Video Recorder}
+\defterm{DVR}{Digital Video Recorder}
+\defterm{API}{Application Programming Interface}
+\defterm{IoT}{Internet of Things}
+\defterm{VPN}{Virtual Private Network}
+
+\title{Système de Sécurité Dollarama}
+\subtitle{Documentation Technique avec Footnotes}
+\author{Équipe Sécurité}
+\date{\today}
+\department{Technologies de l'Information}
+\status{Confidentiel}
+\version{1.0}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+Dans le cadre de notre infrastructure de sécurité, nous utilisons des \term{NVR} et des \term{DVR} pour l'enregistrement vidéo. Ces systèmes sont connectés via notre \term{API} interne et intégrés avec nos dispositifs \term{IoT}.
+
+L'accès à distance se fait via \term{VPN} sécurisé pour maintenir la confidentialité des données.
+
+\newpage
+
+\section{Configuration Réseau}
+
+Les \term{NVR} sont configurés pour communiquer avec les caméras IP via des protocoles standardisés. Chaque \term{DVR} dispose d'une interface d'administration accessible via l'\term{API} REST.
+
+Nous pouvons également utiliser des footnotes normales\footnote{Ceci est une footnote standard} en parallèle avec les termes techniques.
+
+\newpage
+
+\section{Maintenance}
+
+Pour la maintenance des systèmes \term{IoT} et l'accès via \term{VPN}, suivre les procédures standard.
+
+% Exemple avec légende personnalisée si besoin
+\customlegend[Note Importante]{
+Ce document utilise maintenant le système de footnotes avec numérotation superscript automatique pour les termes techniques.
+}
+
+\end{document}

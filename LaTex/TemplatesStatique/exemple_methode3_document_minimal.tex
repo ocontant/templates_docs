@@ -1,0 +1,62 @@
+% MÉTHODE 3: Document Minimal
+% Exemple d'un document simple utilisant seulement les éléments nécessaires
+% Parfait pour des analyses rapides ou des documents courts
+
+\input{TemplateStatique/dollarama_template}
+
+\begin{document}
+
+% Titre simple avec logo
+\begin{center}
+\dollaramalogo[0.5]
+\vspace{2cm}
+
+{\Huge\bfseries\color{DollaramaGreen} Analyse Financière Rapide}
+\vspace{1cm}
+
+{\Large Projet d'Optimisation des Coûts}
+\vspace{2cm}
+
+\begin{tabular}{ll}
+\textbf{Auteur:} & Pierre Dubois \\
+\textbf{Date:} & \today
+\end{tabular}
+\end{center}
+
+\clearpage
+
+% Contenu direct sans table des matières
+\section{Résumé du Projet}
+
+Ce document présente une analyse financière simplifiée pour le projet d'optimisation des coûts dans nos centres de distribution.
+
+\infobox{
+\textbf{Objectif:} Réduire les coûts opérationnels de 15\% sur 12 mois tout en maintenant le niveau de service actuel.
+}
+
+\section{Investissement Proposé}
+
+L'investissement total requis est de \$750,000 réparti comme suit:
+\begin{itemize}
+\item Nouveaux équipements: \$500,000
+\item Formation du personnel: \$150,000
+\item Consulting externe: \$100,000
+\end{itemize}
+
+% Inclusion sélective - seulement l'analyse financière
+\input{TemplateStatique/section_financial_analysis}
+
+\section{Recommandation}
+
+\warningbox{
+\textbf{Action Requise:} Approbation du budget avant le 31 décembre pour bénéficier des rabais fournisseurs de fin d'année.
+}
+
+Basé sur l'analyse financière ci-dessus, nous recommandons fortement d'approuver cet investissement qui générera un ROI de 185\% sur 3 ans.
+
+\vfill
+\begin{center}
+{\small Document préparé avec les templates Dollarama LaTeX}
+\end{center}
+
+\end{document}

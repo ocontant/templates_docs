@@ -1,0 +1,97 @@
+% Test des en-têtes de tableaux avec contraste amélioré
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{TemplatesParametriques/dollarama-business}
+
+% Définition des couleurs Dollarama
+\definecolor{DollaramaGreen}{HTML}{00A651}
+\definecolor{DollaramaYellow}{HTML}{FFF200}
+\definecolor{DollaramaDarkGreen}{HTML}{008A42}
+
+\begin{document}
+
+\title{Test des En-têtes de Tableaux}
+\author{Test}
+\date{\today}
+\maketitle
+
+\section{Tableau avec En-têtes Standards (Contraste Amélioré)}
+
+\begin{table}[h]
+\centering
+\caption{Exemple avec en-têtes standards - DollaramaGreen 80\% (amélioration du contraste)}
+\begin{tabular}{|l|r|r|r|}
+\hline
+\dollaramatabheader
+\dollaramatabheadertext{Produit} & 
+\dollaramatabheadertext{Quantité} & 
+\dollaramatabheadertext{Prix Unit.} & 
+\dollaramatabheadertext{Total} \\
+\hline
+Produit A & 100 & \$5.00 & \$500.00 \\
+\hline
+Produit B & 150 & \$3.50 & \$525.00 \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Tableau avec En-têtes Alternatifs (Jaune)}
+
+\begin{table}[h]
+\centering
+\caption{Exemple avec en-têtes alternatifs - DollaramaYellow 90\%}
+\begin{tabular}{|l|r|r|r|}
+\hline
+\dollaramatabheaderalt
+\dollaramatabheaderaltext{Critère} & 
+\dollaramatabheaderaltext{Option A} & 
+\dollaramatabheaderaltext{Option B} & 
+\dollaramatabheaderaltext{Différence} \\
+\hline
+Coût & \$1000 & \$1200 & \$200 \\
+\hline
+Performance & 95\% & 90\% & -5\% \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Tableau avec En-têtes Critiques (Rouge)}
+
+\begin{table}[h]
+\centering
+\caption{Exemple avec en-têtes critiques - Rouge 80\%}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\dollaramatabheadercritical
+\dollaramatabheadertext{Risque} & 
+\dollaramatabheadertext{Impact} & 
+\dollaramatabheadertext{Probabilité} & 
+\dollaramatabheadertext{Score} \\
+\hline
+Risque A & Élevé & Moyen & 0.6 \\
+\hline
+Risque B & Faible & Élevé & 0.3 \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Comparaison Avant/Après}
+
+\textbf{Amélioration du contraste:}
+\begin{itemize}
+\item \textbf{Avant:} DollaramaGreen!30 (30\% d'opacité) - Contraste insuffisant
+\item \textbf{Après:} DollaramaGreen!80 (80\% d'opacité) - Contraste conforme aux standards UX/UI
+\end{itemize}
+
+\textbf{Avantages du nouveau système:}
+\begin{itemize}
+\item Meilleure lisibilité et accessibilité
+\item Respect des standards de contraste WCAG
+\item Commandes réutilisables standardisées
+\item Cohérence visuelle garantie
+\end{itemize}
+
+\end{document}

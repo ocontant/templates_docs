@@ -1,0 +1,212 @@
+% Master Template for Dollarama Business Cases
+% This template links all other templates and provides a complete document structure
+% Usage: Copy this file and modify the content sections
+
+\input{dollarama_template}
+
+% Include all specialized templates
+\input{document_elements_template}
+\input{financial_tables_template}
+\input{risk_matrix_template}
+\input{executive_summary_template}
+\input{appendices_template}
+
+\begin{document}
+
+% ================================
+% TITLE PAGE
+% ================================
+\begin{titlepage}
+\dollaramalogo[0.6]
+
+\vspace{2cm}
+
+\begin{center}
+{\Huge\bfseries\color{DollaramaGreen} BUSINESS CASE}
+
+\vspace{1cm}
+
+{\Large\color{DollaramaGreen} [TITRE DU PROJET]}
+
+\vspace{2cm}
+
+{\large Document de Justification d'Investissement}
+
+\vspace{3cm}
+
+\begin{tabular}{ll}
+\textbf{Préparé par:} & [Nom de l'auteur] \\
+\textbf{Titre:} & [Titre/Position] \\
+\textbf{Date:} & \today \\
+\textbf{Version:} & [Version] \\
+\textbf{Statut:} & [Brouillon/Final/Approuvé]
+\end{tabular}
+
+\vfill
+
+\dollaramalogo[0.4]
+\end{center}
+\end{titlepage}
+
+% ================================
+% TABLE OF CONTENTS
+% ================================
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+\tableofcontents
+\clearpage
+
+\listoftables
+\clearpage
+
+\listoffigures
+\clearpage
+
+% ================================
+% EXECUTIVE SUMMARY
+% ================================
+\input{executive_summary_template}
+
+% ================================
+% MAIN CONTENT SECTIONS
+% ================================
+\clearpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\section{Introduction}
+
+\subsection{Contexte}
+[Décrivez le contexte du projet]
+
+\subsection{Objectifs}
+[Listez les objectifs principaux]
+
+\subsection{Portée}
+[Définissez la portée du projet]
+
+% Use citation examples
+Selon la documentation interne \citeinterne{SI-2024-001}{2024}{Politique de Sécurité des Systèmes d'Information}, les standards actuels exigent...
+
+\section{Problématique}
+
+\subsection{Situation Actuelle}
+[Décrivez la situation actuelle]
+
+% Use highlight box
+\highlightbox{
+\textbf{Point Clé:} La situation actuelle présente des défis majeurs qui nécessitent une intervention immédiate.
+}
+
+\subsection{Enjeux et Défis}
+[Identifiez les enjeux principaux]
+
+% Use warning box
+\warningbox{
+Les risques associés à l'inaction incluent des impacts opérationnels et financiers significatifs.
+}
+
+\section{Solutions Proposées}
+
+\subsection{Solution 1: [Nom de la solution]}
+[Description détaillée de la solution 1]
+
+% Example of using financial table
+\examplecostbreakdown
+
+\subsection{Solution 2: [Nom de la solution]}
+[Description détaillée de la solution 2]
+
+% Use info box
+\infobox{
+Cette solution offre une approche alternative avec des bénéfices spécifiques à considérer.
+}
+
+\section{Analyse Financière}
+
+\subsection{Coûts d'Investissement}
+[Détaillez les coûts]
+
+% Use financial metrics box
+\keymetricsbox{826,353}{285}{3}{2650}
+
+\subsection{Retour sur Investissement}
+[Analysez le ROI]
+
+% Example ROI table
+\exampleROI
+
+\subsection{Analyse de Sensibilité}
+[Analysez les variations possibles]
+
+\section{Analyse des Risques}
+
+\subsection{Identification des Risques}
+[Identifiez les risques principaux]
+
+% Example risk matrix
+\exampleriskmatrix
+
+\subsection{Stratégies de Mitigation}
+[Décrivez les stratégies]
+
+% Use mitigation boxes
+\preventionbox{
+\begin{itemize}
+\item Formation préventive des équipes
+\item Tests pilotes avant déploiement complet
+\item Documentation complète des procédures
+\end{itemize}
+}
+
+\contingencybox{
+\begin{itemize}
+\item Plan de retour en arrière (rollback)
+\item Équipe de support d'urgence disponible 24/7
+\item Budget de contingence de 10\%
+\end{itemize}
+}
+
+% Risk dashboard
+\riskdashboard{12}{8}{3}{15}
+
+\section{Plan d'Implémentation}
+
+\subsection{Phases du Projet}
+[Décrivez les phases]
+
+\subsection{Échéancier}
+[Présentez l'échéancier]
+
+\subsection{Ressources Requises}
+[Listez les ressources]
+
+\section{Recommandations}
+
+\subsection{Recommandation Principale}
+[Formulez votre recommandation]
+
+% Use quote box for key recommendation
+\quotebox{
+Nous recommandons fortement l'adoption de la Solution 2 comme mesure transitoire, suivie de l'implémentation de la Solution 1 comme vision à long terme.
+}{Équipe Architecture Infrastructure}
+
+\subsection{Prochaines Étapes}
+[Définissez les prochaines étapes]
+
+\begin{enumerate}
+\item Approbation du business case par le comité exécutif
+\item Allocation du budget pour la phase pilote
+\item Sélection des sites pilotes (3-5 magasins)
+\item Lancement de la phase pilote
+\item Évaluation et ajustements
+\item Déploiement complet
+\end{enumerate}
+
+% ================================
+% APPENDICES
+% ================================
+\input{appendices_template}
+
+\end{document}

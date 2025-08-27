@@ -1,0 +1,196 @@
+% Modular Financial Analysis Section
+% This file contains ONLY the financial analysis content
+% Usage: \input{section_financial_analysis} in your main document
+
+\section{Analyse Financière}
+
+\subsection{Investissements Requis}
+
+% Cost Breakdown Table
+\begin{table}[H]
+\centering
+\caption{Analyse des Coûts - [Nom de votre solution]}
+\label{tab:cost-analysis}
+\begin{tabular}{|p{0.4\textwidth}|r|r|r|}
+\hline
+\rowcolor{DollaramaGreen!30}
+\textbf{\color{white}Élément} & 
+\textbf{\color{white}Quantité} & 
+\textbf{\color{white}Coût Unitaire} & 
+\textbf{\color{white}Total} \\
+\hline
+[Catégorie matériel - Ex: Serveurs] & [Qté] & \$[Prix] & \$[Total] \\
+\hline
+\rowcolor{gray!10}
+[Catégorie logiciel - Ex: Licences] & [Qté] & \$[Prix] & \$[Total] \\
+\hline
+[Catégorie services - Ex: Installation] & [Qté] & \$[Prix] & \$[Total] \\
+\hline
+\rowcolor{gray!10}
+[Catégorie formation - Ex: Formation utilisateurs] & [Qté] & \$[Prix] & \$[Total] \\
+\hline
+[Catégorie support - Ex: Maintenance annuelle] & [Qté] & \$[Prix] & \$[Total] \\
+\hline
+\rowcolor{gray!10}
+[Autres coûts - Ex: Contingence] & [Qté] & \$[Prix] & \$[Total] \\
+\hline
+\rowcolor{DollaramaGreen!20}
+\textbf{TOTAL INVESTISSEMENT} & & & \textbf{\$[TOTAL]} \\
+\hline
+\end{tabular}
+\end{table}
+
+% Key Financial Metrics
+\vspace{1em}
+\begin{center}
+\fcolorbox{DollaramaGreen}{DollaramaGreen!10}{%
+\begin{minipage}{0.9\textwidth}
+\vspace{0.5em}
+\begin{center}
+{\Large\bfseries\color{DollaramaGreen} INDICATEURS FINANCIERS CLÉS}
+\end{center}
+\vspace{0.5em}
+
+\begin{tabular}{p{0.22\textwidth}p{0.22\textwidth}p{0.22\textwidth}p{0.22\textwidth}}
+\centering
+\fcolorbox{DollaramaYellow}{white}{%
+\begin{minipage}{0.2\textwidth}
+\centering
+\textbf{VAN}\\
+\vspace{0.2em}
+{\Large\color{DollaramaGreen}\$[Montant]}
+\end{minipage}
+} & 
+\centering
+\fcolorbox{DollaramaYellow}{white}{%
+\begin{minipage}{0.2\textwidth}
+\centering
+\textbf{TRI}\\
+\vspace{0.2em}
+{\Large\color{DollaramaGreen}[XX]\%}
+\end{minipage}
+} &
+\centering
+\fcolorbox{DollaramaYellow}{white}{%
+\begin{minipage}{0.2\textwidth}
+\centering
+\textbf{Payback}\\
+\vspace{0.2em}
+{\Large\color{DollaramaGreen}[X] mois}
+\end{minipage}
+} &
+\centering
+\fcolorbox{DollaramaYellow}{white}{%
+\begin{minipage}{0.2\textwidth}
+\centering
+\textbf{ROI 5 ans}\\
+\vspace{0.2em}
+{\Large\color{DollaramaGreen}[XXX]\%}
+\end{minipage}
+}
+\end{tabular}
+
+\vspace{0.5em}
+\end{minipage}
+}
+\end{center}
+\vspace{1em}
+
+\subsection{Analyse de Retour sur Investissement}
+
+\begin{table}[H]
+\centering
+\caption{Projection des Flux de Trésorerie}
+\label{tab:cashflow}
+\begin{tabular}{|l|r|r|r|r|r|r|}
+\hline
+\rowcolor{DollaramaGreen!30}
+\textbf{\color{white}Élément} & 
+\textbf{\color{white}Année 0} & 
+\textbf{\color{white}Année 1} & 
+\textbf{\color{white}Année 2} & 
+\textbf{\color{white}Année 3} & 
+\textbf{\color{white}Année 4} & 
+\textbf{\color{white}Année 5} \\
+\hline
+\textbf{Investissements} & -\$[Montant] & \$0 & \$0 & \$0 & \$0 & \$0 \\
+\hline
+\rowcolor{gray!10}
+[Type économie 1] & \$0 & \$[Montant] & \$[Montant] & \$[Montant] & \$[Montant] & \$[Montant] \\
+\hline
+[Type économie 2] & \$0 & \$[Montant] & \$[Montant] & \$[Montant] & \$[Montant] & \$[Montant] \\
+\hline
+\rowcolor{gray!10}
+[Type économie 3] & \$0 & \$[Montant] & \$[Montant] & \$[Montant] & \$[Montant] & \$[Montant] \\
+\hline
+\textbf{Total Économies} & \$0 & \$[Total] & \$[Total] & \$[Total] & \$[Total] & \$[Total] \\
+\hline
+\rowcolor{DollaramaGreen!20}
+\textbf{Flux Net Annuel} & -\$[Montant] & \$[Total] & \$[Total] & \$[Total] & \$[Total] & \$[Total] \\
+\hline
+\textbf{Flux Cumulé} & -\$[Montant] & \$[Total] & \$[Total] & \$[Total] & \$[Total] & \$[Total] \\
+\hline
+\rowcolor{DollaramaYellow!20}
+\textbf{VAN (8\%)} & -\$[Montant] & \$[VAN1] & \$[VAN2] & \$[VAN3] & \$[VAN4] & \$[VAN5] \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Comparaison avec l'Alternative}
+
+\begin{table}[H]
+\centering
+\caption{Comparaison Financière des Options}
+\label{tab:comparison}
+\begin{tabular}{|p{0.35\textwidth}|r|r|r|}
+\hline
+\rowcolor{DollaramaGreen!30}
+\textbf{\color{white}Critère} & 
+\textbf{\color{white}Option 1} & 
+\textbf{\color{white}Option 2} & 
+\textbf{\color{white}Différence} \\
+\hline
+Investissement initial & \$[Montant] & \$[Montant] & \textcolor{DollaramaGreen}{[+/-]\$[Diff]} \\
+\hline
+\rowcolor{gray!10}
+Temps de déploiement & [X] mois & [Y] mois & \textcolor{DollaramaGreen}{[+/-][Z] mois} \\
+\hline
+Économies première année & \$[Montant] & \$[Montant] & \textcolor{DollaramaGreen}{[+/-]\$[Diff]} \\
+\hline
+\rowcolor{gray!10}
+Période de récupération & [X] mois & [Y] mois & \textcolor{DollaramaGreen}{[+/-][Z] mois} \\
+\hline
+Risque d'implémentation & [Niveau] & [Niveau] & \textcolor{DollaramaGreen}{[Comparaison]} \\
+\hline
+\rowcolor{gray!10}
+Complexité technique & [Niveau] & [Niveau] & \textcolor{DollaramaGreen}{[Comparaison]} \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Analyse de Sensibilité}
+
+\highlightbox{
+\textbf{Guide pour l'Analyse de Sensibilité:}
+\begin{itemize}
+\item \textbf{Scénario pessimiste:} Décrivez l'impact si les économies sont 20\% inférieures aux prévisions
+\item \textbf{Scénario optimiste:} Décrivez l'impact si les économies sont 20\% supérieures aux prévisions
+\item \textbf{Variables critiques:} Identifiez les facteurs qui ont le plus d'impact sur le ROI
+\item \textbf{Points de bascule:} À quel niveau de performance le projet devient-il non rentable?
+\end{itemize}
+
+Incluez ici votre analyse spécifique montrant la robustesse financière du projet dans différents scénarios.
+}
+
+\subsection{Justification de l'Investissement}
+
+\infobox{
+\textbf{Points clés à inclure dans votre justification:}
+\begin{enumerate}
+\item \textbf{Retour rapide:} Expliquez quand les bénéfices commencent à se matérialiser
+\item \textbf{Coût d'opportunité:} Quel est le coût de ne pas agir maintenant?
+\item \textbf{Effet de levier:} Comment l'investissement génère-t-il de la valeur multiplicative?
+\item \textbf{Flexibilité:} Quelles options futures cette solution ouvre-t-elle?
+\item \textbf{Alignement stratégique:} Comment s'intègre-t-elle aux objectifs corporatifs?
+\end{enumerate}
+}

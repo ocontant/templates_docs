@@ -1,0 +1,27 @@
+\babel@toc {french}{}\relax 
+\contentsline {section}{Résumé Exécutif}{2}{section*.1}%
+\contentsline {section}{\numberline {1}Introduction et Contexte}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Contexte Organisationnel}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Infrastructure actuelle de sécurité}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Architecture technique :}{3}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Projet de modernisation en cours}{3}{subsection.1.4}%
+\contentsline {section}{\numberline {2}Définition du Besoin}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Accès Sécurisé aux Caméras}{4}{subsection.2.1}%
+\contentsline {section}{\numberline {3}Exposition du Problème}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Problème principal}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Cas d'usage critique : Migration FortiRecorder}{5}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Contrainte technique secondaire}{5}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Solution temporaire actuelle (non satisfaisante)}{5}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Approche en Deux Temps}{6}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Solution 1 : Architecture modernisée avec accès sécurisé}{6}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Solution 2 : Dispositif Jump Box temporaire}{6}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Analyse d'Impact}{7}{section.5}%
+\contentsline {section}{\numberline {6}Matrice des Risques}{8}{section.6}%
+\contentsline {section}{\numberline {7}Estimation des Coûts}{9}{section.7}%
+\contentsline {section}{\numberline {8}Approche Stratégique Recommandée}{10}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Justification de la refonte architecturale}{10}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Décisions requises}{10}{subsection.8.2}%
+\contentsline {section}{\numberline {9}Plan de Mise en Œuvre Intégré}{11}{section.9}%
+\contentsline {section}{\numberline {10}Appendices}{12}{section.10}%
+\contentsline {section}{\numberline {11}Détails Techniques de l'Architecture}{12}{section.11}%
+\contentsline {section}{\numberline {12}Spécifications Jump Box}{13}{section.12}%

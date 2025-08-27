@@ -1,0 +1,162 @@
+% Dollarama Conclusion Section Template
+% Parametric template for conclusion sections with forward-looking elements
+% Usage: \usepackage{dollarama-section-conclusion}
+%        \dollaramaconclusion{title}{subtitle}{content}{headerimage}
+
+\ProvidesPackage{dollarama-section-conclusion}
+
+% Required packages
+\RequirePackage{tikz}
+\RequirePackage{graphicx}
+\RequirePackage{array}
+
+% Conclusion Section Command
+% Parameters: {section_title}{subtitle}{content_text}{header_image_path}
+\newcommand{\dollaramasectionconclusion}[4]{
+    \clearpage
+    
+    % Add banner image using simple approach
+    \noindent
+    \makebox[\textwidth][c]{%
+        \includegraphics[width=\textwidth, height=4cm, keepaspectratio=false]{#4}%
+    }
+    \vspace{0.2cm}
+    
+    % Section header with forward-looking design
+    \begin{center}
+        {\fontsize{28}{34}\selectfont\bfseries\color{DollaramaDarkGreen} #1}
+        
+        \vspace{0.5cm}
+        
+        % Subtitle if provided
+        \ifx\relax#2\relax
+        \else
+            {\fontsize{16}{20}\selectfont\color{DollaramaLightGray} #2}
+            \vspace{0.5cm}
+        \fi
+        
+        % Upward-trending line design
+        \begin{tikzpicture}
+            \draw[DollaramaYellow, line width=2pt] 
+                  (0,0) -- (3,0.3) -- (6,0.5) -- (9,0.8) -- (12,1);
+            \draw[DollaramaDarkGreen, line width=1pt] 
+                  (0,-0.1) -- (12,0.9);
+        \end{tikzpicture}
+    \end{center}
+    
+    \vspace{1.5cm}
+    
+    % Content area
+    \begin{flushleft}
+        {\fontsize{12}{16}\selectfont #3}
+    \end{flushleft}
+}
+
+% Looking forward subsection
+\newcommand{\dollaramamlookingforward}[2]{
+    \vspace{1cm}
+    
+    % Subsection title with future-focused accent
+    {\fontsize{18}{22}\selectfont\bfseries\color{DollaramaDarkGreen} #1}
+    
+    \vspace{0.3cm}
+    \begin{tikzpicture}
+        \shade[left color=DollaramaYellow, right color=DollaramaDarkGreen] 
+              (0,0) rectangle (8,0.05);
+    \end{tikzpicture}
+    \vspace{0.8cm}
+    
+    % Content
+    {\fontsize{11}{15}\selectfont #2}
+}
+
+% Executive summary dashboard
+\newcommand{\dollaramaexecutivedashboard}[4]{
+    \vspace{1.5cm}
+    
+    \begin{center}
+        \begin{tikzpicture}
+            \node[draw=DollaramaDarkGreen, fill=DollaramaDarkGreen!3, rounded corners=10pt, 
+                  text width=\textwidth-1cm, inner sep=2cm] {
+                
+                % Title
+                {\fontsize{16}{20}\selectfont\bfseries\color{DollaramaDarkGreen} EXECUTIVE DASHBOARD}
+                
+                \vspace{1.5cm}
+                
+                % Dashboard metrics
+                \begin{tabular}{@{}*{4}{>{\centering\arraybackslash}p{3cm}}@{}}
+                    {\fontsize{18}{22}\selectfont\bfseries\color{DollaramaYellow} #1} & 
+                    {\fontsize{18}{22}\selectfont\bfseries\color{DollaramaYellow} #2} & 
+                    {\fontsize{18}{22}\selectfont\bfseries\color{DollaramaYellow} #3} & 
+                    {\fontsize{18}{22}\selectfont\bfseries\color{DollaramaYellow} #4} \\[0.3cm]
+                    
+                    {\fontsize{9}{11}\selectfont\color{DollaramaGray} PROJECT TIMELINE} & 
+                    {\fontsize{9}{11}\selectfont\color{DollaramaGray} TARGET REVENUE} & 
+                    {\fontsize{9}{11}\selectfont\color{DollaramaGray} INITIATIVES} & 
+                    {\fontsize{9}{11}\selectfont\color{DollaramaGray} STORE NETWORK} \\
+                \end{tabular}
+                
+                \vspace{1cm}
+                
+                % Success indicators
+                \begin{tikzpicture}
+                    % Progress bars
+                    \foreach \i/\label/\percent in {0/Growth Strategy/85, 1.5/Market Expansion/92, 3/Digital Transform/78} {
+                        \node[anchor=west] at (0,\i) {\fontsize{9}{11}\selectfont\color{DollaramaGray}\label};
+                        \draw[DollaramaLightGray, line width=3pt] (4,\i) -- (8,\i);
+                        \draw[DollaramaYellow, line width=3pt] (4,\i) -- ({4+\percent/100*4},\i);
+                        \node[anchor=west] at (8.2,\i) {\fontsize{8}{10}\selectfont\color{DollaramaDarkGreen}\percent\%};
+                    }
+                \end{tikzpicture}
+            };
+        \end{tikzpicture}
+    \end{center}
+    
+    \vspace{1cm}
+}
+
+% Strategic recommendations box
+\newcommand{\dollaramastrategicrecommendations}[1]{
+    \vspace{1cm}
+    
+    \begin{tikzpicture}
+        \node[draw=DollaramaYellow, fill=DollaramaYellow!8, rounded corners=8pt, 
+              text width=\textwidth-2cm, inner sep=1.5cm] {
+            {\fontsize{13}{17}\selectfont\bfseries\color{DollaramaDarkGreen} Strategic Recommendations:}
+            
+            \vspace{0.8cm}
+            
+            {\fontsize{11}{15}\selectfont #1}
+        };
+    \end{tikzpicture}
+    
+    \vspace{1cm}
+}
+
+% Future outlook with growth indicators
+\newcommand{\dollaramafutureoutlook}[3]{
+    \vspace{1.5cm}
+    
+    \begin{center}
+        {\fontsize{14}{18}\selectfont\bfseries\color{DollaramaDarkGreen} FUTURE OUTLOOK}
+    \end{center}
+    
+    \vspace{1cm}
+    
+    \begin{tikzpicture}
+        % Growth trajectory visualization
+        \draw[DollaramaYellow, thick] (0,0) -- (3,0.5) -- (6,1.2) -- (9,2) -- (12,2.8);
+        \draw[DollaramaDarkGreen, thick, dashed] (0,0) -- (12,2.5);
+        
+        % Outlook points
+        \node[text width=3.5cm, align=center] at (3,-1) 
+            {\fontsize{9}{11}\selectfont\color{DollaramaDarkGreen}#1};
+        \node[text width=3.5cm, align=center] at (6,-1) 
+            {\fontsize{9}{11}\selectfont\color{DollaramaDarkGreen}#2};
+        \node[text width=3.5cm, align=center] at (9,-1) 
+            {\fontsize{9}{11}\selectfont\color{DollaramaDarkGreen}#3};
+    \end{tikzpicture}
+    
+    \vspace{1cm}
+}

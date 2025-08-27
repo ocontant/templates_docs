@@ -1,0 +1,115 @@
+% MÉTHODE 2: Utiliser le Template de Structure Complet
+% Ce fichier est une copie modifiée de document_structure_template.tex
+% Démonstration: copier uniquement ce fichier principal qui référence les autres
+
+\input{TemplateStatique/dollarama_template}
+\input{TemplateStatique/document_elements_template}
+
+\begin{document}
+
+% ================================
+% TITLE PAGE
+% ================================
+\begin{titlepage}
+\dollaramalogo[0.6]
+
+\vspace{2cm}
+
+\begin{center}
+{\Huge\bfseries\color{DollaramaGreen} BUSINESS CASE}
+
+\vspace{1cm}
+
+{\Large\color{DollaramaGreen} Transformation Digitale des Magasins}
+
+\vspace{0.5cm}
+
+{\large\color{DollaramaGreen} Initiative de Modernisation 2024-2025}
+
+\vspace{2cm}
+
+{\large Document de Justification d'Investissement}
+
+\vspace{3cm}
+
+\begin{tabular}{ll}
+\textbf{Préparé par:} & Marie Lavoie \\
+\textbf{Titre:} & VP Transformation Digitale \\
+\textbf{Département:} & Innovation \\
+\textbf{Date:} & \today \\
+\textbf{Version:} & 2.0 \\
+\textbf{Statut:} & Révision
+\end{tabular}
+
+\vfill
+
+\begin{center}
+\textit{Confidentiel - Usage interne seulement}
+\end{center}
+
+\dollaramalogo[0.4]
+\end{center}
+\end{titlepage}
+
+% ================================
+% TABLE OF CONTENTS
+% ================================
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+\tableofcontents
+\clearpage
+
+\listoftables
+\clearpage
+
+% ================================
+% EXECUTIVE SUMMARY (MODULAR)
+% ================================
+\input{TemplateStatique/section_executive_summary}
+
+% ================================
+% MAIN CONTENT SECTIONS
+% ================================
+\clearpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\section{Introduction et Contexte}
+
+\subsection{Contexte Organisationnel}
+
+Dollarama Inc. opère un réseau de 1,600 magasins à travers le Canada. Cette initiative vise à moderniser l'infrastructure technologique pour améliorer l'expérience client et l'efficacité opérationnelle.
+
+\subsection{Problématique Actuelle}
+
+Les systèmes actuels datent de plus de 10 ans et nécessitent une modernisation complète pour répondre aux attentes croissantes des clients et aux besoins opérationnels.
+
+\highlightbox{
+\textbf{Impact Clé:} Les systèmes obsolètes causent des délais de 30\% dans les opérations quotidiennes et génèrent \$2M de coûts annuels en maintenance.
+}
+
+% ================================
+% MODULAR SECTIONS
+% ================================
+\input{TemplateStatique/section_financial_analysis}
+\input{TemplateStatique/section_risk_assessment}
+\input{TemplateStatique/section_implementation_timeline}
+
+% ================================
+% CONCLUSION
+% ================================
+\section{Conclusion}
+
+Ce projet de transformation digitale représente une opportunité stratégique majeure pour Dollarama. Avec un investissement de \$5M, nous générerons des économies annuelles de \$3M dès la deuxième année.
+
+\highlightbox{
+\textbf{Message Clé:} L'approbation immédiate permettra de débuter la transformation dès Q1 2025 et de réaliser les premiers bénéfices en Q3 2025.
+}
+
+% ================================
+% APPENDICES (MODULAR)
+% ================================
+\input{TemplateStatique/section_appendices}
+
+\end{document}
